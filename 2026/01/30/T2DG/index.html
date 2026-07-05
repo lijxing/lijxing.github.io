@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="title:T2DG起源1学习的烦乱和进度缘由,决定直接做项目,抓细节。  项目搭建1unity 2D核心  目标123456789101112131415161718UI音乐特效粒子相机动画线程血条技能碰撞场景切换过场动画小地图键盘控制设置配置表宝箱元素反应  图片绕着轴心点旋转12pivolt , global。先移动父类到一个竖线下,再移动精灵图所在的元素，使得图片被线穿过。    Gam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/01/30/T2DG/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title:T2DG起源1学习的烦乱和进度缘由,决定直接做项目,抓细节。  项目搭建1unity 2D核心  目标123456789101112131415161718UI音乐特效粒子相机动画线程血条技能碰撞场景切换过场动画小地图键盘控制设置配置表宝箱元素反应  图片绕着轴心点旋转12pivolt , global。先移动父类到一个竖线下,再移动精灵图所在的元素，使得图片被线穿过。    Gam">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-01-30T13:10:26.702Z">
+<meta property="article:modified_time" content="2026-03-02T13:56:34.760Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "http://example.com/2026/01/30/T2DG/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2026-01-30T13:10:26.702Z",
+  "dateModified": "2026-03-02T13:56:34.760Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "John Doe",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/01/30/T2DG/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">Hexo</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Untitled</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-01-30T13:10:26.702Z" title="Created 2026-01-30 21:10:26">2026-01-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-03-02T13:56:34.760Z" title="Updated 2026-03-02 21:56:34">2026-03-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><hr>
+<h2 id="title-T2DG"><a href="#title-T2DG" class="headerlink" title="title:T2DG"></a>title:T2DG</h2><h5 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">学习的烦乱和进度缘由,决定直接做项目,抓细节。</span><br></pre></td></tr></table></figure>
+
+<h5 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unity 2D核心</span><br></pre></td></tr></table></figure>
+
+<h5 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">UI</span><br><span class="line">音乐</span><br><span class="line">特效</span><br><span class="line">粒子</span><br><span class="line">相机</span><br><span class="line">动画</span><br><span class="line">线程</span><br><span class="line">血条</span><br><span class="line">技能</span><br><span class="line">碰撞</span><br><span class="line">场景切换</span><br><span class="line">过场动画</span><br><span class="line">小地图</span><br><span class="line">键盘控制</span><br><span class="line">设置</span><br><span class="line">配置表</span><br><span class="line">宝箱</span><br><span class="line">元素反应</span><br></pre></td></tr></table></figure>
+
+<h5 id="图片绕着轴心点旋转"><a href="#图片绕着轴心点旋转" class="headerlink" title="图片绕着轴心点旋转"></a>图片绕着轴心点旋转</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pivolt , global。</span><br><span class="line">先移动父类到一个竖线下,再移动精灵图所在的元素，使得图片被线穿过。</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="GameObject分类"><a href="#GameObject分类" class="headerlink" title="GameObject分类"></a>GameObject分类</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Player:</span><br><span class="line">	state: Idle, Jump&amp;Fall, DoubleJump, Shift, Move, Attack, Defender,WallJump,</span><br><span class="line">Ghost:</span><br><span class="line">	state: Move, Attack</span><br><span class="line">Witch:</span><br><span class="line">	state:</span><br><span class="line">Wizard:</span><br><span class="line">tileMap:</span><br><span class="line">BackGround:</span><br><span class="line">Ground:</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Player是唯一具有MonoBehaviour的,管理state和stateMachine,具有的MonoBehaviour方法: Awake(初始化成员变量),Start(调用stateMachine的初始化方法初始化),Update(调用stateMachine的currentState的Update方法) </span><br><span class="line"></span><br><span class="line">EntityState代表当前状态,方法有Enter(进入前的数据处理), Update(数据处理和状态流转), Exit(退出的数据处理)</span><br><span class="line"></span><br><span class="line">StateMachine负责处理状态流转, InitState和ChangeState</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="输入系统"><a href="#输入系统" class="headerlink" title="输入系统"></a>输入系统</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.在PackageManage中安装Input System</span><br><span class="line">2.在ProjectSetting中将Player的Active Input Handling设置为Both</span><br><span class="line">3.创建Input Actions,创建Action Map,Action,Binding</span><br><span class="line">4.生成C#脚本,在Player的Awake中赋值,OnEnable和disEnable中修改</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> PlayerAction inputSystem &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; &#125;</span><br><span class="line"><span class="keyword">public</span> Vector2 moveInput &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnEnable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    inputSystem.Enable();</span><br><span class="line"></span><br><span class="line">    inputSystem.PlayerInputSet.MoveMent.performed +=</span><br><span class="line">        ctx =&gt; moveInput  = ctx.ReadValue&lt;Vector2&gt;();</span><br><span class="line"></span><br><span class="line">    inputSystem.PlayerInputSet.MoveMent.canceled +=</span><br><span class="line">        ctx =&gt; moveInput = Vector2.zero;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnDisable</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    inputSystem.Disable();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">player.inputSystem.PlayerInputSet.AttackMent.WasPerformedThisFrame()</span><br></pre></td></tr></table></figure>
+
+<h5 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h5><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">CSharpTest</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Father</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> personName;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Father</span>(<span class="params"><span class="built_in">string</span> personName</span>)</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.personName = personName;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">PrintInfo</span>()</span> &#123;</span><br><span class="line">            Console.WriteLine(personName);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Son</span> : <span class="title">Father</span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">int</span> age;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Son</span>(<span class="params"><span class="built_in">string</span> personName, <span class="built_in">int</span> age</span>):<span class="title">base</span>(<span class="params">personName</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">this</span>.age = age;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">PrintInfo</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">base</span>.PrintInfo();</span><br><span class="line">            Console.WriteLine(age);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] <span class="keyword">args</span></span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            Father father = <span class="keyword">new</span> Son(<span class="string">&quot;jimi&quot;</span>, <span class="number">12</span>);<span class="comment">// 里氏替换原则</span></span><br><span class="line">            father.PrintInfo();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">jimi</span></span><br><span class="line"><span class="comment">12  </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在C#中，Father father = new Son(&quot;jimi&quot;, 12); 和 Son son = new Son(&quot;jimi&quot;, 12); 在底层调用上并没有区别</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 分配内存：sizeof(Father) + sizeof(Son) + 对象头</span><br><span class="line">2. 调用构造函数链：Son.ctor() -&gt; Father.ctor(&quot;jimi&quot;) -&gt; Object.ctor()</span><br><span class="line">3. 初始化虚方法表指针（指向Son的vTable）</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Father father &#x3D; new Son(“jimi”, 12);</th>
+<th>Son son &#x3D; new Son(“jimi”, 12);</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>可访问成员</td>
+<td>Father定义的成员</td>
+<td>Son的所有成员</td>
+</tr>
+<tr>
+<td>虚方法调用</td>
+<td>运行时查找Son的vTable</td>
+<td>运行时查找Son的vTable</td>
+</tr>
+<tr>
+<td>非虚方法调用</td>
+<td>编译时绑定到Father的方法</td>
+<td>编译时绑定到Son的方法</td>
+</tr>
+</tbody></table>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">son.age = <span class="number">13</span>;           <span class="comment">// ✅ 直接访问，编译通过</span></span><br><span class="line">son.PrintInfo();        <span class="comment">// ✅ 编译通过</span></span><br><span class="line">son.SomeSonMethod();    <span class="comment">// ✅ 如果有这个方法，编译通过</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// father.age = 13;     // ❌ 编译错误：Father类型没有age字段</span></span><br><span class="line">father.PrintInfo();     <span class="comment">// ✅ 编译通过（因为Father有这个方法）</span></span><br><span class="line"><span class="comment">// father.SomeSonMethod(); // ❌ 编译错误</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 编译时类型检查</span></span><br><span class="line">Son son2 = father;              <span class="comment">// ❌ 编译错误：需要显式转换</span></span><br><span class="line">Son son2 = (Son)father;         <span class="comment">// ✅ 编译通过，运行时检查</span></span><br><span class="line">Son son2 = father <span class="keyword">as</span> Son;       <span class="comment">// ✅ 编译通过，运行时转换</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行时转换可能失败</span></span><br><span class="line">Father father2 = <span class="keyword">new</span> Father(<span class="string">&quot;Tom&quot;</span>);</span><br><span class="line">Son son3 = (Son)father2;        <span class="comment">// ❌ 运行时异常：InvalidCastException</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="碰撞检测"><a href="#碰撞检测" class="headerlink" title="碰撞检测"></a>碰撞检测</h5><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自动Debug用的,不用主动调用</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnDrawGizmos</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Gizmos.color = Color.red;</span><br><span class="line">    Gizmos.DrawLine(transform.position, <span class="keyword">new</span> Vector3(transform.position.x + faceDirect * horizontalDistance, transform.position.y, <span class="number">0</span>));</span><br><span class="line">    Gizmos.DrawLine(transform.position - faceDirect*v1, <span class="keyword">new</span> Vector3(transform.position.x - faceDirect*v1.x, transform.position.y - verticalDistance, <span class="number">0</span>));</span><br><span class="line">    <span class="comment">//Gizmos.DrawLine(transform.position + faceDirect * v2, new Vector3(transform.position.x + faceDirect * v2.x, transform.position.y - verticalDistance, 0));</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">DetectedFunc</span>()</span> &#123;</span><br><span class="line">    <span class="comment">// 在Update中调用</span></span><br><span class="line">    isOnGrounded = Physics2D.Raycast(transform.position - faceDirect * v1, Vector2.down, verticalDistance, whatIsGround);</span><br><span class="line">    isWall = Physics2D.Raycast(transform.position, Vector2.right * faceDirect, horizontalDistance, whatIsGround);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="状态切换"><a href="#状态切换" class="headerlink" title="状态切换"></a>状态切换</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.调用ChangeState()后使用return结束后续调用</span><br><span class="line">2.父类的Update()会转变为其他状态时,需要在子类调用父类的方法后判断状态机当前的状态是否与当前子类状态一致</span><br></pre></td></tr></table></figure>
+
+<h5 id="trigger"><a href="#trigger" class="headerlink" title="trigger"></a>trigger</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">给PlayerAnimator组件挂载一个C#脚本,在动画的最后一帧添加trigger,绑定OperatorCurrentStateTriggle()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerAnimationTrigger</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> Player player;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Awake</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        player = GetComponentInParent&lt;Player&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OperatorCurrentStateTriggle</span>()</span> &#123;</span><br><span class="line">        player.CallAnimationTrigger();</span><br><span class="line">        <span class="comment">// 通过player来统一调用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">isOnGround &amp;&amp; moveInput==0    ||  isOnGround &amp;&amp; moveInput!=0 &amp;&amp; isWell    idle</span><br><span class="line">isOnGround &amp;&amp; moveInput!=0  &amp;&amp; !isWell  move</span><br><span class="line"></span><br><span class="line">由状态机管理,处理所有状态</span><br><span class="line">if(...)&#123;&#125;</span><br><span class="line">if(...)&#123;&#125;</span><br><span class="line">子类处理特有的响应,比如键盘输入。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="计时器"><a href="#计时器" class="headerlink" title="计时器"></a>计时器</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="tileMap"><a href="#tileMap" class="headerlink" title="tileMap"></a>tileMap</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用tileMap制作静态背景和关卡地图</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.在层级界面创建2D tileMap选择Regular,rename为Grid;</span><br><span class="line">2.在Grid下创建Ground(2D tileMap Regular)</span><br><span class="line">3.给Ground添加Tilemap Collider2D, Rigibody 2D, Composite Collider 2D。</span><br><span class="line">	Tilemap Collider2D为 Tilemap 中的每个瓦片生成碰撞体</span><br><span class="line">	Composite Collider 2D(需要勾选Used by Composite)合并多个碰撞体为一个优化的复合碰撞体，添加 Composite Collider 2D 时，会自动添加一个 Rigidbody 2D 组件（设置为静态）</span><br><span class="line">	Composite Collider 2D</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.将素材导入到Sprites下,在Assets下创建TileMap</span><br><span class="line">2.Window界面找到tilePalettle:选择Ground对象</span><br><span class="line">3.创建新的palettle保存到TileMap下,并创建一个存放tile的文件夹</span><br><span class="line">4.调整sprite大小，将图片拖入到Tile Palette保存到TileMap下用于存放tile的文件夹</span><br><span class="line">5.拼图</span><br><span class="line">6.拖动到Scene布置,设置Rigibody 2D为static,设置Composite Collider 2D为多边形</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置层级:越大越靠前</span><br></pre></td></tr></table></figure>
+
+<h5 id="CinemaMachine相机"><a href="#CinemaMachine相机" class="headerlink" title="CinemaMachine相机"></a>CinemaMachine相机</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.在Package Manger里面安装Cinemachine</span><br><span class="line">2.在层级里面创建2d cinema(创建完成会自动为main camera加上CinemamachineBrain控制main camera的行为)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">编辑CinemachineVirtualCamera</span><br><span class="line"></span><br><span class="line">Follow: 2D物体</span><br><span class="line">Look At: 3d物体</span><br><span class="line"></span><br><span class="line">DeadZone:设置camera不移动的区间</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">创建相机碰撞</span><br><span class="line">1.在Cinema相机那Add Extension处选择添加Cinemachine Confiner 2D</span><br><span class="line">3.创建Empty Object,添加Polygon Collider 2D,编辑Collider大小,并传给Bounding Shape 2D。</span><br><span class="line"></span><br><span class="line">相机碰撞器大点好。</span><br></pre></td></tr></table></figure>
+
+<h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">背景跟随相机动,相机具有稳定的运动。</span><br><span class="line">设置一个类，实现Move和对自身的管理。</span><br><span class="line">在背景上挂载脚本，设置视差。</span><br><span class="line">1.天空视差为1跟随移动</span><br><span class="line">2.建筑设置3个,视差为0.85。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background.position = Vector3.Lerp(background.position,background.position + Vector3.right * distance * parallaxMultiplier,0.5f)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">背景闪烁:</span><br><span class="line">	1.改为FixedUpdate</span><br><span class="line">	2.camera改为FixedUpdate。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">空的gameObject下添加子类会影响到实际的中心点，点击顶部菜单GameObject --&gt; center On Children.</span><br></pre></td></tr></table></figure>
+
+<h5 id="敌人和玩家代码复用"><a href="#敌人和玩家代码复用" class="headerlink" title="敌人和玩家代码复用"></a>敌人和玩家代码复用</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">先将玩家的代码移动到共有的角色身上，再进行迁移。</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/01/30/T2DG/">http://example.com/2026/01/30/T2DG/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/01/11/RPG/" title="RPG"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">RPG</div></div><div class="info-2"><div class="info-item-1">1选择universal 2D  1234567891011121314using System.Collections;using System.Collections.Generic;using UnityEngine;public class Player : MonoBehaviour&#123;    public Rigidbody2D rd; // 自身的刚体    void Update()    &#123;        // 刚体键盘控制输入水平移动，        rd.velocity = new Vector2(Input.GetAxis(&quot;Horizontal&quot;), rd.velocity.y);    &#125;&#125;  1移动刚体可以使得物理效果更佳  12345678910111213141516171819202122232425262728using System;using System.Collections;using System.Collections.Generic;using UnityEngine...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-T2DG"><span class="toc-number">1.</span> <span class="toc-text">title:T2DG</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B5%B7%E6%BA%90"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">起源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">项目搭建</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E7%BB%95%E7%9D%80%E8%BD%B4%E5%BF%83%E7%82%B9%E6%97%8B%E8%BD%AC"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">图片绕着轴心点旋转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#GameObject%E5%88%86%E7%B1%BB"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">GameObject分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">工作流程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.0.0.7.</span> <span class="toc-text">输入系统</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99"><span class="toc-number">1.0.0.8.</span> <span class="toc-text">里氏替换原则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B"><span class="toc-number">1.0.0.9.</span> <span class="toc-text">碰撞检测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E5%88%87%E6%8D%A2"><span class="toc-number">1.0.0.10.</span> <span class="toc-text">状态切换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#trigger"><span class="toc-number">1.0.0.11.</span> <span class="toc-text">trigger</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-number">1.0.0.12.</span> <span class="toc-text">优化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%A1%E6%97%B6%E5%99%A8"><span class="toc-number">1.0.0.13.</span> <span class="toc-text">计时器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B"><span class="toc-number">1.0.0.14.</span> <span class="toc-text">协程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#tileMap"><span class="toc-number">1.0.0.15.</span> <span class="toc-text">tileMap</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CinemaMachine%E7%9B%B8%E6%9C%BA"><span class="toc-number">1.0.0.16.</span> <span class="toc-text">CinemaMachine相机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.0.0.17.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%8C%E4%BA%BA%E5%92%8C%E7%8E%A9%E5%AE%B6%E4%BB%A3%E7%A0%81%E5%A4%8D%E7%94%A8"><span class="toc-number">1.0.0.18.</span> <span class="toc-text">敌人和玩家代码复用</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/30/T2DG/" title="Untitled">Untitled</a><time datetime="2026-01-30T13:10:26.702Z" title="Created 2026-01-30 21:10:26">2026-01-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/11/RPG/" title="RPG">RPG</a><time datetime="2026-01-11T05:06:20.377Z" title="Created 2026-01-11 13:06:20">2026-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/10/cpp%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" title="CPP核心">CPP核心</a><time datetime="2026-01-10T03:52:10.213Z" title="Created 2026-01-10 11:52:10">2026-01-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/10/unity/" title="unity">unity</a><time datetime="2026-01-10T03:52:10.213Z" title="Created 2026-01-10 11:52:10">2026-01-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/10/csharp/" title="csharp">csharp</a><time datetime="2026-01-10T03:52:10.203Z" title="Created 2026-01-10 11:52:10">2026-01-10</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By John Doe</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
