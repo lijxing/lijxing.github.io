@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="电商问数mysqldocker-compose.yaml12services: # 必写,定义所有的应用容器应用volumes: # 可选,管理命名卷(持久化数据)  123456789101112131415161718services:	mysql:		image: mysql:8.0		container_name: mysql		restart: unless-stopped		envir">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/08/25/mysql/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="电商问数mysqldocker-compose.yaml12services: # 必写,定义所有的应用容器应用volumes: # 可选,管理命名卷(持久化数据)  123456789101112131415161718services:	mysql:		image: mysql:8.0		container_name: mysql		restart: unless-stopped		envir">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-08-25T13:47:49.688Z">
+<meta property="article:modified_time" content="2026-08-25T23:48:52.037Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-mysql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/08/25/mysql/" class="article-date">
+  <time class="dt-published" datetime="2026-08-25T13:47:49.688Z" itemprop="datePublished">2026-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="电商问数mysql"><a href="#电商问数mysql" class="headerlink" title="电商问数mysql"></a>电商问数mysql</h4><h5 id="docker-compose-yaml"><a href="#docker-compose-yaml" class="headerlink" title="docker-compose.yaml"></a>docker-compose.yaml</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span> <span class="comment"># 必写,定义所有的应用容器应用</span></span><br><span class="line"><span class="attr">volumes:</span> <span class="comment"># 可选,管理命名卷(持久化数据)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">	<span class="attr">mysql:</span></span><br><span class="line">		<span class="attr">image:</span> <span class="string">mysql:8.0</span></span><br><span class="line">		<span class="attr">container_name:</span> <span class="string">mysql</span></span><br><span class="line">		<span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">		<span class="attr">environment:</span></span><br><span class="line">			<span class="attr">MYSQL_ROOT_PASSWORD:</span> <span class="string">ljx</span></span><br><span class="line">			<span class="attr">MYSQL_USER:</span> <span class="string">ljx</span></span><br><span class="line">			<span class="attr">MYSQL_PASSWORD:</span> <span class="string">ljx</span></span><br><span class="line">		<span class="attr">volumes:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="attr">mysql_data:</span> <span class="string">/var/lib/mysql</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">./mysql:/docker-entrypoint-initdb.d</span></span><br><span class="line">		<span class="attr">command:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">--character-set-server=utf8mb4</span></span><br><span class="line">			<span class="bullet">-</span> <span class="string">--collation-server=utf8mb4_general_ci</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">	<span class="attr">mysql_data:</span></span><br><span class="line">         </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">restart: always容器不管什么原因,永远自动重启</span><br><span class="line">restart: unless-stopped容器意外崩溃，</span><br><span class="line">不写restart / restart: &quot;no&quot; :任何情况下都不自动重启,挂了就停在那</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yaml会自动将关键词 true/false/yes/no/on/off默认解析为布尔值，而不是字符串。</span><br><span class="line">加双引号 &quot;no&quot; 是为规避 YAML 布尔解析坑，属于防御性写法</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MYSQL_USER: username</span><br><span class="line">MYSQL_PASSWORD: password</span><br><span class="line">环境变量只能定义单个普通用户,只能在建表语句中创建其他用户</span><br><span class="line"></span><br><span class="line">CREATE USER  IF NOT EXISTS &#x27;jim&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;jim&#x27;;创建一个用户jim，密码为jim的用户，允许从任何地址连接数据库</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;jim&#x27;@&#x27;%&#x27;;</span><br><span class="line"></span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">volumes:</span></span><br><span class="line">	<span class="comment"># 命名卷,持久化,命名卷挂载,将docker容器的数据挂载在宿主机系统管理的命名卷，不在容器内部。(/var/lib/docker/volumes/shopkeeper_mysql_data/_data)</span></span><br><span class="line">	<span class="bullet">-</span> <span class="attr">mysql_data:</span> <span class="string">./var/lib/mysql</span> </span><br><span class="line">	</span><br><span class="line">	<span class="comment"># 绑定挂载: 将初始化脚本绑定到宿主机的./mysql目录下</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">./mysql:</span> <span class="string">/docker-entrypoint-initdb.d</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">command:</span> <span class="comment"># 每一次启动MySQL容器会自动加载字符集配置</span></span><br><span class="line">	<span class="comment"># 设置服务器默认字符集为utf8是阉割版,最多存储3个字节字符,存不了emoji/生僻字/特殊字符</span></span><br><span class="line">	<span class="comment"># utf8mb4是完整的4字节UTF-8,支持所有的Unicode字符。</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">--character-set-server=utf8mb4</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment"># 设置校对规则对大小写不敏感</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">--collation-server=utf8mb4_general_ci</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 顶层volumes</span></span><br><span class="line"><span class="comment"># 因为前面命名挂载了mysql_data,需要通过顶层volumes声明mysql_data是一个命名卷，需要自动创建。</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">	<span class="attr">mysql_data:</span>  <span class="comment"># 顶层的volumes对象是键值对象!!!没有-</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 设置客户端与MySQL服务器之间数据传输的字符集与校对规则。</span><br><span class="line"># 等价于: </span><br><span class="line"># <span class="keyword">SET</span> character_set_client <span class="operator">=</span> utf8mb4;</span><br><span class="line"># <span class="keyword">SET</span> character_set_connection <span class="operator">=</span> utf8mb4;</span><br><span class="line"># <span class="keyword">SET</span> character_set_results <span class="operator">=</span> utf8mb4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> NAMES utf8mb4;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> dw <span class="keyword">DEFAULT</span> <span class="keyword">CHARACTER SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci;</span><br><span class="line"># 创建dw数据库并设置字符集为utf8mb4且不区分大小写。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">设置不区分大小写可以提升查询性能</span><br><span class="line">但是对于一些字段比如用户名,验证码,token等必须区分大小写的可以在建表阶段单独指定</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> <span class="string">&#x27;user&#x27;</span> (</span><br><span class="line">	id <span class="type">INT</span> <span class="keyword">PRIMARY KEY</span> AUTO_INCREMENT,</span><br><span class="line">    username <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT NULL</span> <span class="keyword">COLLATE</span> utf8mb4_gengeral_cs, <span class="comment">-- 单独指定区分大小写。</span></span><br><span class="line">    nickename <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT NULL</span>, <span class="comment">-- 沿用库默认，不区分大小写</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> dw.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;ljx&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line"><span class="comment">-- 授予任何方式连接的ljx用户操作dw数据库的所有权限</span></span><br><span class="line"><span class="comment">-- 执行完后必须刷新权限</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE dw; <span class="comment">-- 使用dw数据库</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/08/25/mysql/" data-id="cmt9bi1u0000648tyf82a7nwc" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/08/12/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/08/">August 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">July 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">June 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/08/25/mysql/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/12/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2026/07/28/%E7%94%B5%E5%95%86%E9%97%AE%E6%95%B0/">电商问数</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/17/LangchainAndLanggraph/">langchain</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/08/agent/">文章标题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
