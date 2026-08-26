@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>电商问数mysql | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="电商问数mysqldocker-compose.yaml12services: # 必写,定义所有的应用容器应用volumes: # 可选,管理命名卷(持久化数据)  123456789101112131415161718services:	mysql:		image: mysql:8.0		container_name: mysql		restart: unless-stopped		envir">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2026/08/25/mysql/index.html">
+<meta property="og:title" content="电商问数mysql">
+<meta property="og:url" content="http://example.com/2026/08/27/mysql/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="电商问数mysqldocker-compose.yaml12services: # 必写,定义所有的应用容器应用volumes: # 可选,管理命名卷(持久化数据)  123456789101112131415161718services:	mysql:		image: mysql:8.0		container_name: mysql		restart: unless-stopped		envir">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-08-25T13:47:49.688Z">
-<meta property="article:modified_time" content="2026-08-25T23:48:52.037Z">
+<meta property="article:published_time" content="2026-08-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-26T23:19:44.887Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -75,13 +75,23 @@
       <div class="outer">
         <section id="main"><article id="post-mysql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2026/08/25/mysql/" class="article-date">
-  <time class="dt-published" datetime="2026-08-25T13:47:49.688Z" itemprop="datePublished">2026-08-25</time>
+    <a href="/2026/08/27/mysql/" class="article-date">
+  <time class="dt-published" datetime="2026-08-26T16:00:00.000Z" itemprop="datePublished">2026-08-27</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      电商问数mysql
+    </h1>
+  
+
+      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -113,11 +123,31 @@
 
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE dw; <span class="comment">-- 使用dw数据库</span></span><br></pre></td></tr></table></figure>
 
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF EXITS dim_region;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> dim_region(</span><br><span class="line">	region_id <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    provice <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    country VRACHAR(<span class="number">20</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT INTO</span> dim_region(region_id, provice, country) </span><br><span class="line"><span class="keyword">VALUES</span> </span><br><span class="line">	(<span class="string">&#x27;R001&#x27;</span>, <span class="string">&#x27;广东省&#x27;</span>, <span class="string">&#x27;中国&#x27;</span>),</span><br><span class="line">	(<span class="string">&#x27;R002&#x27;</span>, <span class="string">&#x27;浙江省&#x27;</span>, <span class="string">&#x27;中国&#x27;</span>),</span><br><span class="line">	(<span class="string">&#x27;R003&#x27;</span>, <span class="string">&#x27;四川省&#x27;</span>, <span class="string">&#x27;中国&#x27;</span>),</span><br><span class="line">	(<span class="string">&#x27;R004&#x27;</span>, <span class="string">&#x27;北京市&#x27;</span>, <span class="string">&#x27;中国&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> user_grade <span class="keyword">FROM</span> user_info <span class="keyword">WHERE</span> user_gender <span class="operator">=</span> <span class="string">&#x27;女&#x27;</span> LIMIT <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="联表查询INNER-JOIN"><a href="#联表查询INNER-JOIN" class="headerlink" title="联表查询INNER JOIN"></a>联表查询INNER JOIN</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- INNO JOIN只返回两边匹配的数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> c.customer_id, f.order_amount</span><br><span class="line"><span class="keyword">FROM</span> customer c</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> fact f</span><br><span class="line"><span class="keyword">ON</span> c.customer_id <span class="operator">=</span> f.customer_id <span class="comment">--关联条件</span></span><br><span class="line"><span class="keyword">WHERE</span> c.gender <span class="operator">=</span> <span class="string">&#x27;女&#x27;</span></span><br><span class="line">LIMIT <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c / f是表别名.简化书写</span><br><span class="line">ON 是两张表相等的关联字段</span><br></pre></td></tr></table></figure>
+
+<h5 id="LEFT-JOIN左连接"><a href="#LEFT-JOIN左连接" class="headerlink" title="LEFT JOIN左连接"></a>LEFT JOIN左连接</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 左表全部保留,右表无匹配则为NULL</span></span><br><span class="line"><span class="keyword">SELECT</span> c.custom_id, c.name, r.province, r.region_name, f.order_amount</span><br><span class="line"><span class="keyword">FROM</span> dw.dim_customer c</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> dw.fact_order f</span><br><span class="line"><span class="keyword">ON</span> c.custom_id <span class="operator">=</span> f.custom_id</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> dw.dim_region r</span><br><span class="line"><span class="keyword">ON</span> f.region <span class="operator">=</span> r.region</span><br><span class="line"><span class="keyword">WHERE</span> c.gender <span class="operator">=</span> <span class="string">&#x27;女&#x27;</span></span><br><span class="line">LIMIT <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="RIGHT-JOIN右连接"><a href="#RIGHT-JOIN右连接" class="headerlink" title="RIGHT JOIN右连接"></a>RIGHT JOIN右连接</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">右表全部保留,左表匹配不到显示为NULL</span><br></pre></td></tr></table></figure>
+
+<h5 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">COUNT / SUM / MAX...</span><br><span class="line"></span><br><span class="line">SQL使用了聚合函数后,SELECT后面出现的普通字段,必须全部写到GROUP BY里。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  u.user_id, u.user_name,  <span class="built_in">SUM</span>(o.price)</span><br><span class="line"><span class="keyword">FROM</span> dw.user u</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> dw.order o</span><br><span class="line"><span class="keyword">ON</span> o.user_id <span class="operator">=</span> u.user_id</span><br><span class="line"><span class="keyword">WHERE</span> u.user_gender <span class="operator">=</span> <span class="string">&#x27;女&#x27;</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> u.user_id, u.user_name</span><br><span class="line">LIMIT <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/08/25/mysql/" data-id="cmt9bi1u0000648tyf82a7nwc" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/08/27/mysql/" data-id="cmtaqx65s0007sstybe5lbd7i" data-title="电商问数mysql" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -126,6 +156,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2026/08/27/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          架构设计
+        
+      </div>
+    </a>
   
   
     <a href="/2026/08/12/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
@@ -168,7 +207,11 @@
       <ul>
         
           <li>
-            <a href="/2026/08/25/mysql/">(no title)</a>
+            <a href="/2026/08/27/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/27/mysql/">电商问数mysql</a>
           </li>
         
           <li>
@@ -181,10 +224,6 @@
         
           <li>
             <a href="/2026/06/17/LangchainAndLanggraph/">langchain</a>
-          </li>
-        
-          <li>
-            <a href="/2026/06/08/agent/">文章标题</a>
           </li>
         
       </ul>

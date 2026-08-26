@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>架构设计 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="最外层的conf123app_config:所有的服务包括logging, mysqldb, es, qdrant,llm, embedding  1234llm:	base_url: https:&#x2F;&#x2F;..&#x2F;v1	model: deepseek-flash-v4	api_key: $&#123;oc.env:API_KEY&#125;  1234567$&#123;oc.env:API_KEY&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="架构设计">
+<meta property="og:url" content="http://example.com/2026/08/27/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最外层的conf123app_config:所有的服务包括logging, mysqldb, es, qdrant,llm, embedding  1234llm:	base_url: https:&#x2F;&#x2F;..&#x2F;v1	model: deepseek-flash-v4	api_key: $&#123;oc.env:API_KEY&#125;  1234567$&#123;oc.env:API_KEY&amp;#">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-08-26T23:18:28.734Z">
+<meta property="article:modified_time" content="2026-08-26T23:48:13.579Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-架构设计" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/08/27/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" class="article-date">
+  <time class="dt-published" datetime="2026-08-26T23:18:28.734Z" itemprop="datePublished">2026-08-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      架构设计
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h5 id="最外层的conf"><a href="#最外层的conf" class="headerlink" title="最外层的conf"></a>最外层的conf</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app_config:所有的服务</span><br><span class="line"></span><br><span class="line">包括logging, mysqldb, es, qdrant,llm, embedding</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">llm:</span></span><br><span class="line">	<span class="attr">base_url:</span> <span class="string">https://../v1</span></span><br><span class="line">	<span class="attr">model:</span> <span class="string">deepseek-flash-v4</span></span><br><span class="line">	<span class="attr">api_key:</span> <span class="string">$&#123;oc.env:API_KEY&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$&#123;oc.env:API_KEY&#125;是OmegaConf(简称oc)的环境变量插值语法:</span><br><span class="line">	oc: OmegaConf库的内置环境变量解析器前缀</span><br><span class="line">	env: 代表读取系统的环境变量</span><br><span class="line">	API_KEY: 环境变量名</span><br><span class="line"></span><br><span class="line">运行程序时,OmegaConf会自动读取名为API_KEY的环境变量,把值替换到这个位置等效于:</span><br><span class="line">API_KEY: xxxxx</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">流程:</span><br><span class="line"></span><br><span class="line">.env文件定义变量--.yaml文件配置$&#123;oc.env:API_KEY&#125;--laod_dotenv()加载到系统环境--OmegaConf解析$&#123;oc.env:API_KEY&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">api_key:</span> <span class="string">$&#123;oc.env:API_KEY,</span> <span class="string">&#x27;default_value&#x27;</span><span class="string">&#125;</span></span><br><span class="line"><span class="comment"># 带默认值,如果环境变量不存在则使用默认字符串</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">原生的yaml不具备$&#123;&#125;的能力,纯yaml的$&#123;xxx&#125;只是普通字符串解析,只有基于OmegaConf加载配置文件时,$&#123;oc.env:API_KEY&#125;才会被解析</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.如果忘记调用load_dotenv(),环境变量不会自动加载,会导致变量为空或者抛出异常</span><br><span class="line">2..env格式中不能有空格,等号两侧的空格会直接读入值中.</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/08/27/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" data-id="cmtaqx65s0009ssty8qungzw0" data-title="架构设计" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/08/27/mysql/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">电商问数mysql</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/08/">August 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">July 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">June 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/08/27/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/27/mysql/">电商问数mysql</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/12/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2026/07/28/%E7%94%B5%E5%95%86%E9%97%AE%E6%95%B0/">电商问数</a>
+          </li>
+        
+          <li>
+            <a href="/2026/06/17/LangchainAndLanggraph/">langchain</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
