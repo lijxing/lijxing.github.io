@@ -14,7 +14,7 @@
 <meta property="og:description" content="123生产数据库--数据仓库--元数据知识库--智能体业务数据库的核心任务是支撑线上业务稳定运行,关注下面3件事:下单快,支付快,查询订单快数据仓库: 分析型查询通常具有以下特点:需要扫描大量数据,并做聚合计算,比如sum,count,avg。经常要做多表关联、分组和排序；查询更重，对计算资源的消耗也更高。  123获取一个数据库一致性快照位点 → 导入快照存量数据 → 从该位点开始持续消费变更日">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-07-28T14:24:28.764Z">
-<meta property="article:modified_time" content="2026-08-24T23:05:52.992Z">
+<meta property="article:modified_time" content="2026-09-07T14:24:08.203Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -1211,7 +1211,11 @@
 
 <h5 id="重新启动前清理容器数据"><a href="#重新启动前清理容器数据" class="headerlink" title="重新启动前清理容器数据"></a>重新启动前清理容器数据</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker compose down -v</span><br><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uv run python -m app.scripts.build_meta_knowledge -c conf/meta_config.yaml</span><br></pre></td></tr></table></figure>
+
 <h5 id="服务真正的启动"><a href="#服务真正的启动" class="headerlink" title="服务真正的启动"></a>服务真正的启动</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">通常启动最慢的是 Embedding 服务，因为它要先把模型权重加载到内存里</span><br><span class="line">可以打开 http://localhost:8081/docs/ 看看 Embedding 服务的接口文档是否能正常访问；只要 Embedding 服务已经可用，通常其他几个服务也基本都已经起来了。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">启动完成后：</span><br><span class="line">1.检查数据库</span><br><span class="line">2.qdrant: http://192.168.242.129:6333/dashboard</span><br><span class="line">3.es: http://192.168.242.129:5601/app/management/data/index_management/indices</span><br></pre></td></tr></table></figure>
 
 <h5 id="LangGraph概念"><a href="#LangGraph概念" class="headerlink" title="LangGraph概念"></a>LangGraph概念</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">StateGraph负责注册节点,连接边,编译成图</span><br><span class="line">State保存问题,召回结果,SQL</span><br><span class="line">Node抽取，召回，过滤和执行</span><br><span class="line">Edge决定下一步和条件分支</span><br><span class="line">Runtime Context注入Repository，LLM和依赖</span><br></pre></td></tr></table></figure>
 
@@ -1332,7 +1336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/07/28/%E7%94%B5%E5%95%86%E9%97%AE%E6%95%B0/" data-id="cmtaqx65v000asstyc9uchjbu" data-title="电商问数" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/07/28/%E7%94%B5%E5%95%86%E9%97%AE%E6%95%B0/" data-id="cmtrc1zg8000aboty4gfegrgz" data-title="电商问数" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
