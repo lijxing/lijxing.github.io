@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="RAG三要素123索引：搭建知识库，切割知识，选择合适的Embedding模型检索：找到合适的参考文档，检索方式的选择生成：整合问题和参考文档，输入大模型得到答案，提示词构建和大模型选择  PDF文件的处理1234567891011PDF分为两种，一种是文字型PDF，一种是图片型PDF文字型PDF:保存的是文字字符，字体，坐标等，可以直接复制文字，不需要OCR，直接提取文本即可。（pypdf可以处">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/10/02/RAG/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="RAG三要素123索引：搭建知识库，切割知识，选择合适的Embedding模型检索：找到合适的参考文档，检索方式的选择生成：整合问题和参考文档，输入大模型得到答案，提示词构建和大模型选择  PDF文件的处理1234567891011PDF分为两种，一种是文字型PDF，一种是图片型PDF文字型PDF:保存的是文字字符，字体，坐标等，可以直接复制文字，不需要OCR，直接提取文本即可。（pypdf可以处">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-02T01:43:16.341Z">
+<meta property="article:modified_time" content="2026-10-02T08:45:48.351Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-RAG" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/10/02/RAG/" class="article-date">
+  <time class="dt-published" datetime="2026-10-02T01:43:16.341Z" itemprop="datePublished">2026-10-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h5 id="RAG三要素"><a href="#RAG三要素" class="headerlink" title="RAG三要素"></a>RAG三要素</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">索引：搭建知识库，切割知识，选择合适的Embedding模型</span><br><span class="line">检索：找到合适的参考文档，检索方式的选择</span><br><span class="line">生成：整合问题和参考文档，输入大模型得到答案，提示词构建和大模型选择</span><br></pre></td></tr></table></figure>
+
+<h5 id="PDF文件的处理"><a href="#PDF文件的处理" class="headerlink" title="PDF文件的处理"></a>PDF文件的处理</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PDF分为两种，一种是文字型PDF，一种是图片型PDF</span><br><span class="line"></span><br><span class="line">文字型PDF:保存的是文字字符，字体，坐标等，可以直接复制文字，不需要OCR，直接提取文本即可。（pypdf可以处理）</span><br><span class="line"></span><br><span class="line">图像型PDF:保存的是图片，文字不能复制，不能搜索，必须使用OCR光学字符识别，算法分析图片像素，把图案文字转为可编辑文本。</span><br><span class="line"></span><br><span class="line">OCR只能识别像素图片里的文字，完全读不了PDF里的矢量/原生文字字符</span><br><span class="line"></span><br><span class="line">OCR看局部的字符像素，切割做文字匹配，模型/遮挡直接失效</span><br><span class="line"></span><br><span class="line">多模态对整张图进行全局建模，结合语言逻辑反推残缺文字，同时理解排版结构，不止提取文字，还能理解文字之间的关系。</span><br></pre></td></tr></table></figure>
+
+<h5 id="准备知识库"><a href="#准备知识库" class="headerlink" title="准备知识库"></a>准备知识库</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.知识来源: Word,PDF,Excel...</span><br><span class="line">2.数据的来源: 文字，表格，图片，视频(考虑多模态)...</span><br><span class="line">3.数据清洗: 大模型容错高，先粗洗（降噪，标准化，结构化，去重，合规）</span><br><span class="line"></span><br><span class="line">清洗要在分段前</span><br></pre></td></tr></table></figure>
+
+<h5 id="文档切分"><a href="#文档切分" class="headerlink" title="文档切分"></a>文档切分</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">核心: 语义连贯性</span><br><span class="line">保证划分后的同一段文本里，语义是统一的，完全的</span><br><span class="line">太长语义不统一，影响检索效果(文本块中语义太多)</span><br><span class="line">太短语义不完全，影响生成效果</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">语义连贯性</th>
+<th align="center">实现复杂度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">固定大小切分：字符、token数</td>
+<td align="center">越</td>
+<td align="center">越</td>
+</tr>
+<tr>
+<td align="center">按标点符号划分：如换行符</td>
+<td align="center">来</td>
+<td align="center">来</td>
+</tr>
+<tr>
+<td align="center">按文档结构划分：如标题，章节</td>
+<td align="center">越</td>
+<td align="center">越</td>
+</tr>
+<tr>
+<td align="center">按语义划分：将句子按相关性合并成段落</td>
+<td align="center">好</td>
+<td align="center">难</td>
+</tr>
+</tbody></table>
+<h5 id="文本向量化"><a href="#文本向量化" class="headerlink" title="文本向量化"></a>文本向量化</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将知识块转成向量</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">稀疏向量:(去重词袋法，不去重词袋法，tf-idf)</span><br><span class="line">	向量中大部分元素都是0的向量，只有少数元素是非零的，这些非0的向量通常代表了数据中的关键信息</span><br><span class="line">	</span><br><span class="line">稠密向量:(词嵌入 Word Embedding,维度)</span><br><span class="line">	向量中大部分元素都是非零向量</span><br><span class="line">	优点: 语义相关性好</span><br><span class="line">	</span><br><span class="line">稀疏关键词检索、稠密语义向量检索</span><br></pre></td></tr></table></figure>
+
+<h5 id="向量存储"><a href="#向量存储" class="headerlink" title="向量存储"></a>向量存储</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">主要作用: 嵌入文本，存储向量，相似度分析</span><br><span class="line"></span><br><span class="line">常见数据库: Chromadb, FAISS...</span><br></pre></td></tr></table></figure>
+
+<h5 id="相似度检索"><a href="#相似度检索" class="headerlink" title="相似度检索"></a>相似度检索</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">问题向量和知识块向量:</span><br><span class="line"></span><br><span class="line">文本相似度检索：语义捕获效果好，容错性高</span><br><span class="line">1.余弦相似度: 用向量的夹角表示向量的相似度，夹角从0-180，夹角越大，相似度越小</span><br><span class="line">2.欧式距离: 使用向量的距离表示两个向量的相关性，距离越小，相似度越高</span><br><span class="line"></span><br><span class="line">关键字检索:倒排索引：关键词→文档，部分场景中，命中率高</span><br><span class="line">	1.构建:</span><br><span class="line">		构建关键词---对应文档</span><br><span class="line">		比如: 认输-----nth绝不认输</span><br><span class="line">	2.应用:</span><br><span class="line">		抽取问题关键词--匹配文档</span><br></pre></td></tr></table></figure>
+
+<h5 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">提示词构造</span><br></pre></td></tr></table></figure>
+
+<h5 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">开源：</span><br><span class="line">	安全，隐私性好，模型能力低，ollamm/huggingface，魔塔</span><br><span class="line"></span><br><span class="line">闭源：</span><br><span class="line">	安全性低，模型能力强，一键调用，不需要维护，各大API和框架</span><br></pre></td></tr></table></figure>
+
+<h5 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h5><h5 id="检索优化"><a href="#检索优化" class="headerlink" title="检索优化"></a>检索优化</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">检索优化:</span><br><span class="line">	small to big:</span><br><span class="line">	多路召回</span><br><span class="line">	Rerank</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">small to big:检索时小文本块，生成时大文本块：</span><br><span class="line"></span><br><span class="line">	1. 摘要检索（Chunk 摘要入库）</span><br><span class="line">		处理对象：知识库文档块（入库侧，离线预处理阶段）</span><br><span class="line">		操作：给每一段原始 Chunk 使用LLM生成简短摘要，把「摘要文本」也向量化存入向量库；</span><br><span class="line">		检索逻辑：用户提问同时检索「原文向量」+「摘要向量」两路，互补召回。</span><br><span class="line">	2. 子问题检索（问题分解检索）</span><br><span class="line">		处理对象：用户的查询问句（在线检索阶段，实时）</span><br><span class="line">		操作：大模型把复杂用户问句拆成多个简短子问题，每条子问题分别去检索知识库；</span><br><span class="line">		检索逻辑：多路子查询并行拉取段落，合并所有结果再回答。</span><br><span class="line">		</span><br><span class="line">	3.句子窗口的检索：</span><br><span class="line">		最小的检索单元不是大块的chunk，而是单句/短句，检索命中某一句后,把这句前后相邻的若干句子(窗口)一起拿出来作为完整上下文使用。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">多路召回:</span><br><span class="line">	关键词检索</span><br><span class="line">	相似度检索</span><br><span class="line">	其他查询</span><br><span class="line">	</span><br><span class="line">	得分 = 1 / 排名（排在越前，总分愈高，单路第一名收益爆炸）</span><br><span class="line">		比如3类检索，第一类时返回的顺序是文档1，2，4；第二类返回的顺序是文档3，2，1；第三类检索返回的顺序是文档4，2，1。</span><br><span class="line">		文档1的得分 = 1 / 1 + 1 / 3 + 1/ 3 = 1.67分</span><br><span class="line">		文档2的得分 = 1/ 2 + 1 / 2 + 1 / 2 = 1.50分</span><br><span class="line">		...</span><br><span class="line">		文档2每次都排第二，非常稳定，但文档1两次第3，一次第一，使用平滑指数抹平差异</span><br><span class="line">		</span><br><span class="line">	平滑指数：自己设置一个，分母加常数，缩小分差</span><br><span class="line">	RRF算法: 平滑得分=西格玛[ 1/(排名+平滑指数)]</span><br><span class="line">	</span><br><span class="line">	标准通用值：k=60（Milvus、Elasticsearch 官方默认），平衡单路高分与多路重合</span><br><span class="line">	文档1 = 1 / (60 + 1) + 1 /(60 + 3) + 1 / (60 + 3) = 0.04814</span><br><span class="line">	文档2 = 1 / (60 + 2) + 1 /(60 + 2) + 1 / (60 + 2) = 0.04839</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Rerank:</span><br><span class="line">	1.粗筛:多路检索查询，去重</span><br><span class="line">	2.Rerank模型: 文档 + 问题 ---Rerank模型--- 得到相关性得分</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+<h5 id="生成优化"><a href="#生成优化" class="headerlink" title="生成优化"></a>生成优化</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">生成优化: 如何利用众多的参考文档？ 可能的问题: 上下文溢出，知识块不连贯</span><br><span class="line">	refine模式</span><br><span class="line">	多场景下的refine</span><br><span class="line">	tree_summarize</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">refine模式: </span><br><span class="line">	将知识块和问题排队依次传给大模型，如果当前的知识块可以解决问题，直接获得最终答案，否则继续读取下一个知识块，直到没有知识块生成最终答案。</span><br><span class="line">	利用了所有的知识块，上下文不会溢出，但成本太高</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">多场景下的refine模式:</span><br><span class="line">	将知识块进行打包（聚类，相似度或者直接截断取），按包传给LLM阅读，和refine一致</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tree_summarize: 将上一轮的答案作为参考文档，适合参考文档特别多的场景</span><br><span class="line">	第一轮: 将知识块打包,每个包和问题一起询问LLM，得到每个包的答案</span><br><span class="line">	第二轮: 将答案进行打包，和问题一起丢给大模型，得到新的答案</span><br><span class="line">	。。。</span><br><span class="line">	最后一轮: 只有一个包了，和问题一起丢给大模型得到最终答案</span><br></pre></td></tr></table></figure>
+
+<h5 id="改写提问"><a href="#改写提问" class="headerlink" title="改写提问"></a>改写提问</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">什么时候需要提问改写:</span><br><span class="line">1.提问不规范: 语义模糊，歧义，语句不通顺，提问不规范</span><br><span class="line">2.多轮对话: 结合历史问答对提问改写，指代消解等</span><br><span class="line">3.复杂提问: 拆解成多个问题，分别提问RAG,然后组合成最终答案</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">维度	规则改写	模型改写</span><br><span class="line">依赖	词典、正则、代码模板	LLM 大模型 / 检索小模型</span><br><span class="line">耗时	微秒～毫秒，几乎无延迟	几十～几百毫秒推理耗时</span><br><span class="line">成本	仅开发维护成本，无运行计费	按 token 计费，高并发成本高</span><br><span class="line">语义理解	无理解，只做字符串替换	能读懂完整意图、多歧义、长问句</span><br><span class="line">维护成本	持续新增领域词、模板	一次写好 Prompt，极少维护</span><br><span class="line">输出稳定性	完全固定，不会乱生成	存在少量随机偏差，需过滤兜底</span><br><span class="line">对 BM25 增益	强（精准补充专业关键词）	强（多角度补充关键词）</span><br><span class="line">对向量检索增益	一般，句式变化有限	极强，多样语义覆盖不同文档</span><br></pre></td></tr></table></figure>
+
+<h5 id="合理的利用元数据"><a href="#合理的利用元数据" class="headerlink" title="合理的利用元数据"></a>合理的利用元数据</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">元数据： 对文档的描述，类型，作者，创建日期，来源</span><br><span class="line"></span><br><span class="line">检索前过滤: 剔除无关文档，检索最近文档 expr</span><br><span class="line">检索中评估相关性: 重要文档给予高权重 metadata在提前设置好weight</span><br><span class="line">检索后排序: 重要文档排前面</span><br><span class="line">生成时提示用户体验: 提供参考来源，提升可信度</span><br></pre></td></tr></table></figure>
+
+<h5 id="RAG评估"><a href="#RAG评估" class="headerlink" title="RAG评估"></a>RAG评估</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">量化成效，快速迭代</span><br><span class="line"></span><br><span class="line">1.准确率: 直接站在用户视角，看答案看是否符合实际情况</span><br><span class="line">2.忠实度: LLM生成的内容是否忠实于提供的上下文或背景信息（评估大模型）</span><br><span class="line">3.召回率（更关注，尽可能提升，大模型对噪声有一定容忍性），精确率，F1: 评估参考文档是不是完整精确的召回</span><br><span class="line">	召回率 = 准确检索的知识块C(A和B交集) / 所有相关知识块A </span><br><span class="line">    精确率 =  准确检索的知识块C / 检索出来的参考文档B</span><br><span class="line">    F1 =  2 * 召回率 * 精确率 / (召回率 + 精确率)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">RAG评估方法:前期模型粗评，，后期上线要人工体验下</span><br><span class="line"></span><br><span class="line">人工评估</span><br><span class="line">1. 准备测试样本，包含问题、标准答案、评分标准</span><br><span class="line">2. 执行测试，得到 作答结果</span><br><span class="line">3. 人工交叉评估，评估每个回答准确 or 错误，或者对每个回答评分。</span><br><span class="line">4. 统计准确率，或者统计得分。</span><br><span class="line"></span><br><span class="line">模型自动评估</span><br><span class="line">1. 准备测试样本，包含问题、标准答案。</span><br><span class="line">2. 执行测试，得到 作答结果</span><br><span class="line">3. 模型评估方法 1：将问题 + 作答结果输入 Cross-Encoder 模型(Rerank)，得到两者的相关性作为得分。</span><br><span class="line">4. 模型评估方法 2：评估标准答案和作答结果的文本相似度，得到结果作为评分。</span><br><span class="line">5. 统计得分。</span><br></pre></td></tr></table></figure>
+
+<h5 id="善用工具"><a href="#善用工具" class="headerlink" title="善用工具"></a>善用工具</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LangSmith，Langfuse,Rags框架</span><br></pre></td></tr></table></figure>
+
+<h5 id="Milvus一体化双路逻辑"><a href="#Milvus一体化双路逻辑" class="headerlink" title="Milvus一体化双路逻辑"></a>Milvus一体化双路逻辑</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Milvus一体化双路逻辑:</span><br><span class="line">	写入阶段: 只插入一次数据(一条insert搞定四个字段)</span><br><span class="line">		id主键，content原文，embedding稠密向量，metadata附加属性</span><br><span class="line">		content开启全文索引: enable_full_text=True</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 仅一次插入，不用分开写向量库、检索库</span></span><br><span class="line">collection.insert([</span><br><span class="line">    [doc_ids],        <span class="comment"># id</span></span><br><span class="line">    [contents],       <span class="comment"># content 自动构建BM25倒排稀疏索引</span></span><br><span class="line">    [embeddings],     <span class="comment"># embedding 稠密向量索引</span></span><br><span class="line">    [metadatas]       <span class="comment"># 元数据过滤字段,附加筛选属性字段，不参与向量相似度，与BM25检索，只做前置过滤，业务标记和分类限定。过滤条件</span></span><br><span class="line">])</span><br><span class="line">collection.flush()</span><br><span class="line">collection.create_index(...) <span class="comment"># 分别给embedding、content建各自索引</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">稠密向量索引--相似度使用，基于embedding字段</span><br><span class="line">全文BM25稀疏索引--关键词检索使用，Milvus内部自动对content分词，建倒排，不用手动生成稀疏向量。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">链路1:相似度检索（稠密向量）</span><br><span class="line">	1.用户query--调用Embedding模型，生成查询向量query_emb</span><br><span class="line">	2.Milvus在embedding字段做ANN近相似度检索（余弦/内积距离）</span><br><span class="line">	3.返回匹配的id，相似度分数，需要对应的content/metadata再执行query(expr=f&quot;id in &#123;hit_ids&#125;&quot;)查表拿原文</span><br><span class="line">	</span><br><span class="line">	核心: 只看字面文本content，不使用embedding向量</span><br><span class="line">	</span><br><span class="line">链路2:关键词检索（BM25全文路）</span><br><span class="line">	1.只要传入原始query，不需要向量化</span><br><span class="line">	2.Milvus内部对query分词，和所有文档的content字段的倒排序索引做词匹配，计算BM25相关性得分</span><br><span class="line">	3.返回匹配的id、关键词相关分</span><br><span class="line">	</span><br><span class="line">	核心：只看字面文本content，不使用embedding向量</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 用户输入</span></span><br><span class="line">user_query = <span class="string">&quot;Milvus 全文检索使用教程&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 并行两路召回</span></span><br><span class="line"><span class="comment"># 路A：相似度检索（稠密向量）</span></span><br><span class="line">query_emb = embed_model.encode(user_query)</span><br><span class="line">vec_hits = collection.search(</span><br><span class="line">    data=[query_emb],</span><br><span class="line">    anns_field=<span class="string">&quot;embedding&quot;</span>,</span><br><span class="line">    limit=<span class="number">80</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 路B：关键词BM25检索（直接传文本，自动匹配content）</span></span><br><span class="line">bm25_hits = collection.search(</span><br><span class="line">    data=[user_query],</span><br><span class="line">    search_params=&#123;<span class="string">&quot;index_type&quot;</span>: <span class="string">&quot;TEXT&quot;</span>&#125;,</span><br><span class="line">    limit=<span class="number">80</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. RRF融合两路id，去重重排</span></span><br><span class="line"><span class="comment"># ...融合逻辑省略...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 根据最终doc_id批量拉取content、metadata</span></span><br><span class="line">final_ids = [x[<span class="number">0</span>] <span class="keyword">for</span> x <span class="keyword">in</span> sorted_result[:<span class="number">10</span>]]</span><br><span class="line">docs = collection.query(expr=<span class="string">f&quot;id in <span class="subst">&#123;final_ids&#125;</span>&quot;</span>, output_fields=[<span class="string">&quot;content&quot;</span>, <span class="string">&quot;metadata&quot;</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data = [</span><br><span class="line">    [<span class="number">1</span>], <span class="comment"># id</span></span><br><span class="line">    [<span class="string">&quot;空调出现E1代码如何维修&quot;</span>], <span class="comment"># content</span></span><br><span class="line">    [embed(<span class="string">&quot;空调出现E1代码如何维修&quot;</span>)], <span class="comment"># embedding</span></span><br><span class="line">    [&#123;<span class="string">&quot;biz&quot;</span>:<span class="string">&quot;空调&quot;</span>,<span class="string">&quot;type&quot;</span>:<span class="string">&quot;故障&quot;</span>,<span class="string">&quot;title&quot;</span>:<span class="string">&quot;E1故障维修&quot;</span>,<span class="string">&quot;valid&quot;</span>:<span class="literal">True</span>&#125;] <span class="comment"># metadata</span></span><br><span class="line">]</span><br><span class="line">collection.insert(data)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># expr就是metadata</span></span><br><span class="line"><span class="comment"># 用户问题</span></span><br><span class="line">query = <span class="string">&quot;空调E1报错&quot;</span></span><br><span class="line">query_vec = embed(query)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 向量检索，先过滤空调+有效文档</span></span><br><span class="line">vec_res = collection.search(</span><br><span class="line">    data=[query_vec],</span><br><span class="line">    anns_field=<span class="string">&quot;embedding&quot;</span>,</span><br><span class="line">    expr=<span class="string">&#x27;metadata[&quot;biz&quot;] == &quot;空调&quot; &amp;&amp; metadata[&quot;valid&quot;] == true&#x27;</span>,</span><br><span class="line">    limit=<span class="number">50</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># BM25关键词检索，同样过滤条件</span></span><br><span class="line">bm25_res = collection.search(</span><br><span class="line">    data=[query],</span><br><span class="line">    search_params=&#123;<span class="string">&quot;index_type&quot;</span>:<span class="string">&quot;TEXT&quot;</span>&#125;,</span><br><span class="line">    expr=<span class="string">&#x27;metadata[&quot;biz&quot;] == &quot;空调&quot; &amp;&amp; metadata[&quot;valid&quot;] == true&#x27;</span>,</span><br><span class="line">    limit=<span class="number">50</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h5 id="ANN"><a href="#ANN" class="headerlink" title="ANN"></a>ANN</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Approximate Nearest Neighbor 近似最邻搜索    暴力搜索是精确NN</span><br><span class="line">向量库为了解决海量向量全量比对太慢的问题，提前建立聚类索引，只检索局部向量，快速返回近似相似结果的一套算法，就叫ANN近似最近邻搜索</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">近似检索:</span><br><span class="line"></span><br><span class="line">IVF:</span><br><span class="line">	1.建索引阶段:</span><br><span class="line">		对全库向量做聚类，生成一堆聚类中心，每个中心代表一个&quot;桶&quot;</span><br><span class="line">		每条向量根据距离最近的中心，放进对应的桶里</span><br><span class="line">		</span><br><span class="line">	2.查询时: </span><br><span class="line">		</span><br><span class="line">		粗查，拿查询向量，和所有聚类中心挨个计算，选出距离最小的N个桶</span><br><span class="line">		精搜，只打开刚才选择的几个桶，把查询向量和桶内全部向量计算相似度，排序返回topK</span><br><span class="line"></span><br><span class="line">HNSW分层图索引(Milvus 最常用)--逐层寻路找邻层：</span><br><span class="line">HNSW没有桶，是多层有向图，逻辑是逐层逼近：</span><br><span class="line">	1.图分多层：顶层节点少，稀疏；底层节点多，包含全部向量；</span><br><span class="line">	2.查询流程：</span><br><span class="line">		1.做高层随机选择一个起点向量</span><br><span class="line">		2.对比起点和查询向量距离，遍历起点的邻居，找更近的点，不断向前跳</span><br><span class="line">		3.走到当前层找不到更近的点，就下沉到下一层重复寻路</span><br><span class="line">		4.直到最底层，收集底层候选点，精确计算距离排序</span><br></pre></td></tr></table></figure>
+
+<h5 id="BM25"><a href="#BM25" class="headerlink" title="BM25"></a>BM25</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Best Matching 25一套关键词相关性打分算法，专门做字面文本检索，和ANN向量相似度是两套东西。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">传统关键词检索只看【词有没有出现】，粗糙</span><br><span class="line">BM25综合3个维度算出一个相关性分数，分数越高代表匹配度越高</span><br><span class="line">	1.词频TF:查询关键词在文档中的出现次数（出现越多次分越高）</span><br><span class="line">	2.逆文档频率IDF:词的稀有度</span><br><span class="line">		专有名词，冷门术语:IDF高，命中加分巨多</span><br><span class="line">		停用词(的，是，和):全文档到处是，IDF接近0，几乎不加分</span><br><span class="line">	3.文档长度惩罚：</span><br><span class="line">		同样出现一次关键词，短文档比长文档得分高，避免超长文本乱刷分</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">例子：query= Milvus全文检索</span><br><span class="line"></span><br><span class="line">1.分词，拆成Milvus和全文检索，过滤掉无意义的停用词</span><br><span class="line">2.遍历所有文档的倒排序索引，找出包含这两个词的文档</span><br><span class="line">3.对每篇文档计算BM25总分:</span><br><span class="line">	Milvus是稀有专业词，命中一次就大量加分</span><br><span class="line">	短文档 &gt; 长文档</span><br><span class="line">	同时包含两个关键词 &gt; 只包含单个词</span><br><span class="line">4.按分数从高到低返回文档ID，这就是关键词检索结果</span><br></pre></td></tr></table></figure>
+
+<h5 id="RAG三个阶段"><a href="#RAG三个阶段" class="headerlink" title="RAG三个阶段"></a>RAG三个阶段</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">基础 RAG</span><br><span class="line">最基本的 RAG 流程，文件载入 -- 文本切分 -- 文本向量化 -- 知识检索 -- 提示词构造 -- 大模型问答。</span><br><span class="line"></span><br><span class="line">进阶 RAG</span><br><span class="line">引入了更高阶处理技巧，如问题改写，意图识别，rerank，提示词工程等。</span><br><span class="line"></span><br><span class="line">模块化 RAG</span><br><span class="line">RAG 流程的各个环节抽出来单独研究。应用时，不同环节的不同方案可以互相组合，更容易迭代。</span><br></pre></td></tr></table></figure>
+
+<h5 id="名词"><a href="#名词" class="headerlink" title="名词"></a>名词</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">document: 切分前的文档</span><br><span class="line">chunk: 切分后的知识块</span><br><span class="line">quey: 用户的问题</span><br><span class="line">context: 检索出来的结果</span><br><span class="line">response: 模型的回答</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/10/02/RAG/" data-id="cmuw3lft40001wwtyh93k7hxz" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2026/10/05/FastAPI/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2026/09/15/DeepAgents/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DeepAgents</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">October 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/09/">September 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/08/">August 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">July 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">June 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/10/05/FastAPI/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/02/RAG/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/09/15/DeepAgents/">DeepAgents</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/27/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/27/mysql/">电商问数mysql</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

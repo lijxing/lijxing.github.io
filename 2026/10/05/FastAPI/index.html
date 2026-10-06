@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="FastAPI12FastAPI是一个基于Python的框架原生支持异步，使用pydantic做类型校验，自动生成可交互式文档  12345同步和异步:	同步是阻塞式，任务只能一个一个完成	异步是非阻塞式，任务是交叉执行		异步发起IO后，立刻释放当前线程，去处理其他任务，不用原地死等  123456async def func_async():    start &#x3D; time.time()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/10/05/FastAPI/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="FastAPI12FastAPI是一个基于Python的框架原生支持异步，使用pydantic做类型校验，自动生成可交互式文档  12345同步和异步:	同步是阻塞式，任务只能一个一个完成	异步是非阻塞式，任务是交叉执行		异步发起IO后，立刻释放当前线程，去处理其他任务，不用原地死等  123456async def func_async():    start &#x3D; time.time()">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-04T23:37:44.338Z">
+<meta property="article:modified_time" content="2026-10-06T02:19:55.739Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-FastAPI" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/10/05/FastAPI/" class="article-date">
+  <time class="dt-published" datetime="2026-10-04T23:37:44.338Z" itemprop="datePublished">2026-10-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h5 id="FastAPI"><a href="#FastAPI" class="headerlink" title="FastAPI"></a>FastAPI</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FastAPI是一个基于Python的框架</span><br><span class="line">原生支持异步，使用pydantic做类型校验，自动生成可交互式文档</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">同步和异步:</span><br><span class="line">	同步是阻塞式，任务只能一个一个完成</span><br><span class="line">	异步是非阻塞式，任务是交叉执行</span><br><span class="line">	</span><br><span class="line">	异步发起IO后，立刻释放当前线程，去处理其他任务，不用原地死等</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">func_async</span>():</span><br><span class="line">    start = time.time()</span><br><span class="line">    tasks = [<span class="keyword">async</span>.sleep(<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)]</span><br><span class="line">    <span class="keyword">await</span> asyncio.gather(*tasks)</span><br><span class="line">    end = time.time()</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;time&quot;</span>: <span class="string">f&quot;<span class="subst">&#123;end - start:<span class="number">.2</span>f&#125;</span>&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[asyncio.sleep(1) for i in range(10)]:生成 10 个协程对象（asyncio.sleep 是异步休眠，不是 time.sleep）</span><br><span class="line"></span><br><span class="line">asyncio.gather(*aws, return_exceptions=False)</span><br><span class="line">	*aws:接收任意多个位置参数，每个参数是一个可等待对象（协程/task）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*单星号: 解包列表，元组，生成器【位置参数】</span><br><span class="line">**双星号: 解包字典【关键词参数】</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; 表达式 : 格式规则 &#125;</span><br><span class="line">&#123; end - start : <span class="number">.2</span>f &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 只创建，完全不执行休眠</span></span><br><span class="line">c = asyncio.sleep(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 必须 await 才会真正执行里面的逻辑</span></span><br><span class="line"><span class="keyword">await</span> c</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">async def的函数，调用只产出协程对象，不执行内部代码</span><br><span class="line">普通函数，调用立刻执行代码并返回结果</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用pydantic做数据类型校验"><a href="#使用pydantic做数据类型校验" class="headerlink" title="使用pydantic做数据类型校验"></a>使用pydantic做数据类型校验</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    username: <span class="built_in">str</span></span><br><span class="line">    password: <span class="built_in">str</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/register&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">register</span>(<span class="params">user: User</span>):</span><br><span class="line">    <span class="keyword">return</span> user</span><br></pre></td></tr></table></figure>
+
+<h5 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uv add fastapi</span><br><span class="line">uv add uvicorn</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建FastAPI实例</span></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;data&quot;</span>: <span class="string">&quot;hello&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/getName/&#123;name&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">test1</span>(<span class="params">name: <span class="built_in">str</span></span>): </span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;data&quot;</span>: <span class="string">f&quot;hello,<span class="subst">&#123;name&#125;</span>&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">运行方式:</span><br><span class="line">	1.点击界面按钮运行启动</span><br><span class="line">	2.命令行启动: uv run uvicorn app.api.test1:app --reload</span><br><span class="line">		app.api.test1：文件路径映射</span><br><span class="line">		app是FastAPI实例对象</span><br><span class="line">		--reload开发热重载，修改后自动保存和重启服务器，仅开放环境使用。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在域名后面添加docs来访问FastAPI文档</span><br></pre></td></tr></table></figure>
+
+<h5 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">URL地址和处理函数之间的映射关系</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FastAPI的路由定义基于Python的装饰器</span><br><span class="line"></span><br><span class="line">@FastAPI路径.请求方法(请求路径)</span><br></pre></td></tr></table></figure>
+
+<h5 id="接口参数"><a href="#接口参数" class="headerlink" title="接口参数"></a>接口参数</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">参数：客户端发请求时的额外信息和指令</span><br><span class="line">1.路径参数:GET</span><br><span class="line">	URL路径的一部分 /book/&#123;id&#125;</span><br><span class="line">	指向唯一的，特定的资源</span><br><span class="line">	</span><br><span class="line">2.查询参数:GET</span><br><span class="line">	URL后使用? k1=v1&amp;k2=v2</span><br><span class="line">	对资源集合进行过滤，排序和分页</span><br><span class="line">	</span><br><span class="line">3.请求体:POST,PUT...</span><br><span class="line">	HTTP请求的消息体body中</span><br><span class="line">	创建，更新资源，携带大量数据</span><br></pre></td></tr></table></figure>
+
+<h5 id="路径查询"><a href="#路径查询" class="headerlink" title="路径查询"></a>路径查询</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 路由里写了&#123;变量名&#125;，函数必须定义同名形参接收，否则程序无法运行； </span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/book/&#123;id&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">getBookById</span>(<span class="params"><span class="built_in">id</span>: <span class="built_in">int</span></span>): <span class="comment"># int是参数类型注解</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;msg&quot;</span>: <span class="string">f&quot;book_id: <span class="subst">&#123;<span class="built_in">id</span>&#125;</span>&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用Path来做类型注解</span><br><span class="line">author_name: str = Path(...,xxx )</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">Path参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">…</td>
+<td align="center">必填该字段</td>
+</tr>
+<tr>
+<td align="center">gt&#x2F;ge  lt&#x2F;le</td>
+<td align="center">大于&#x2F;大于等于 小于&#x2F;小于等于</td>
+</tr>
+<tr>
+<td align="center">description</td>
+<td align="center">描述</td>
+</tr>
+<tr>
+<td align="center">min_length max_length</td>
+<td align="center">长度限制</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/news/id/&#123;id&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">getNewsById</span>(<span class="params"><span class="built_in">id</span>: <span class="built_in">int</span> = Path(<span class="params">..., ge=<span class="number">1</span>,le=<span class="number">100</span>, description=<span class="string">&quot;新闻id,取值[1,100]&quot;</span></span>)</span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;news_id&quot;</span>: <span class="built_in">id</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/news/category/&#123;news_category&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">getNewsByCategory</span>(<span class="params">news_category: <span class="built_in">str</span> = Path(<span class="params">..., min_length=<span class="number">2</span>, max_length=<span class="number">10</span>, description=<span class="string">&quot;新闻分类查询接口&quot;</span></span>)</span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;news_category&quot;</span>: news_category</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Path(...)，没有...就报语法错误</span><br></pre></td></tr></table></figure>
+
+<h5 id="查询参数"><a href="#查询参数" class="headerlink" title="查询参数"></a>查询参数</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL？之后，k1=v1&amp;k2=v2</span><br><span class="line">GET方法</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># http://127.0.0.1:8000/news/news_list?title=mt&amp;author=12 </span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/news/news_list&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">getNews</span>(<span class="params">title: <span class="built_in">str</span>, author: <span class="built_in">str</span> </span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;title&quot;</span>: title,</span><br><span class="line">        <span class="string">&quot;author&quot;</span>: author</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询注解使用Query</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/findBooks&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">getBooks</span>(<span class="params"></span></span><br><span class="line"><span class="params">    book_category: <span class="built_in">str</span> = Query(<span class="params"><span class="string">&quot;Python开发&quot;</span>, min_length=<span class="number">5</span>, max_length= <span class="number">255</span>,description=<span class="string">&quot;图书分类&quot;</span></span>),</span></span><br><span class="line"><span class="params">    price: <span class="built_in">int</span> = Query(<span class="params">ge=<span class="number">50</span>, le=<span class="number">100</span>, description=<span class="string">&quot;图书的价格[50,100]&quot;</span></span>)</span></span><br><span class="line"><span class="params"></span>):</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;book_category&quot;</span>: book_category,</span><br><span class="line">        <span class="string">&quot;price&quot;</span>: price</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Query的第一个值代表默认值,和...是二选一,没有则报语法错误</span><br></pre></td></tr></table></figure>
+
+<h5 id="请求体参数"><a href="#请求体参数" class="headerlink" title="请求体参数"></a>请求体参数</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">出现在http的body中，创建更新资源</span><br><span class="line">post / put </span><br><span class="line">HTTP的组成:</span><br><span class="line">	1.请求行: 方法,URL,协议版本</span><br><span class="line">	2.请求头: 元数据信息(Content-Type...)</span><br><span class="line">	3.请求体: 实际要发送的数据</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.定义类型</span><br><span class="line">from pydantic import BaseModel</span><br><span class="line">class User(BaseModel):</span><br><span class="line">	id: str</span><br><span class="line">	name: str</span><br><span class="line"></span><br><span class="line">2.类型注解:</span><br><span class="line">@app.post(&quot;/register&quot;)</span><br><span class="line">async def register(user: User):</span><br><span class="line">	return user</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 请求模型：接收前端注册数据</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserRegisterReq</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">str</span></span><br><span class="line">    name: <span class="built_in">str</span></span><br><span class="line">    password: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 响应模型：只对外暴露安全字段</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserResp</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">str</span></span><br><span class="line">    name: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/register&quot;</span>, response_model=UserResp</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">register</span>(<span class="params">user: UserRegisterReq</span>):</span><br><span class="line">    <span class="comment"># 这里写入库逻辑</span></span><br><span class="line">    <span class="comment"># db.save(user)</span></span><br><span class="line">    <span class="keyword">return</span> user</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">请求体参数的类型注解:Field</span><br><span class="line">from pydantic import Field</span><br><span class="line">用法和Query,Path一致</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">Path参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">…</td>
+<td align="center">必填该字段</td>
+</tr>
+<tr>
+<td align="center">gt&#x2F;ge  lt&#x2F;le</td>
+<td align="center">大于&#x2F;大于等于 小于&#x2F;小于等于</td>
+</tr>
+<tr>
+<td align="center">description</td>
+<td align="center">描述</td>
+</tr>
+<tr>
+<td align="center">min_length max_length</td>
+<td align="center">长度限制</td>
+</tr>
+<tr>
+<td align="center">default</td>
+<td align="center">默认值</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    username: <span class="built_in">str</span> = Field(default=<span class="string">&quot;jim&quot;</span>, min_length=<span class="number">3</span>, max_length=<span class="number">10</span>, description=<span class="string">&quot;用户名&quot;</span>)</span><br><span class="line">    password: <span class="built_in">str</span> = Field(min_length=<span class="number">5</span>, max_length=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/register&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">register</span>(<span class="params">user: User</span>):</span><br><span class="line">    <span class="keyword">return</span> user</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Field(...)表示这个字段必填</span><br></pre></td></tr></table></figure>
+
+<h5 id="响应类型"><a href="#响应类型" class="headerlink" title="响应类型"></a>响应类型</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">默认情况下，FastAPI会自动将路径操作函数返回的Python对象（字典，列表，pydantic模型）,转为JSON兼容格式，包装为JSONResponse返回</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">响应类型</th>
+<th align="center">用途</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">JSONResponse</td>
+<td align="center">默认响应，JSON数据</td>
+<td align="center">return {“k”:”v”}</td>
+</tr>
+<tr>
+<td align="center">HTMLResponse</td>
+<td align="center">返回HTML内容</td>
+<td align="center">rerturn HTMLResponse(html_content)</td>
+</tr>
+<tr>
+<td align="center">PlainTextResponse</td>
+<td align="center">返回纯文本</td>
+<td align="center">retuen PlainTextResponse(“text”)</td>
+</tr>
+<tr>
+<td align="center">FileResponse</td>
+<td align="center">返回文件下载</td>
+<td align="center">return FileResponse(path)</td>
+</tr>
+<tr>
+<td align="center">StreamingResponse</td>
+<td align="center">流式响应</td>
+<td align="center">生成器函数返回数据</td>
+</tr>
+<tr>
+<td align="center">RedirectResponse</td>
+<td align="center">重定向</td>
+<td align="center">return RedirectResponse(url)</td>
+</tr>
+</tbody></table>
+<h5 id="响应类型的设置两种方式"><a href="#响应类型的设置两种方式" class="headerlink" title="响应类型的设置两种方式"></a>响应类型的设置两种方式</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.装饰器中指定响应类型</span><br><span class="line">	场景: 固定返回类型（HTML，纯文本等）</span><br><span class="line">	@app.post(&quot;/html&quot;, response_class=HTMLResponse)</span><br><span class="line">	async def get_html():</span><br><span class="line">		return &quot;&lt;h1&gt;这是html&lt;/h1&gt;&quot;</span><br><span class="line">	</span><br><span class="line">2.返回响应对象</span><br><span class="line">	场景: 文件下载，图片，流式响应</span><br><span class="line">	@app.post(&quot;/file&quot;)</span><br><span class="line">	async def get_html():</span><br><span class="line">		file_path = &quot;./1.txt&quot;</span><br><span class="line">		return FileResponse(file_path)</span><br></pre></td></tr></table></figure>
+
+<h5 id="HTMLResponse"><a href="#HTMLResponse" class="headerlink" title="HTMLResponse"></a>HTMLResponse</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi.responses <span class="keyword">import</span> HTMLResponse</span><br><span class="line"></span><br><span class="line"><span class="comment"># response_class限制了只能返回HTML格式</span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/html1&quot;</span>, response_class=HTMLResponse</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">getHTML1</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&lt;h1&gt;这是大标题&lt;/h1&gt;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/html2&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">getHTML2</span>():</span><br><span class="line">    <span class="keyword">return</span> HTMLResponse(content=<span class="string">&quot;&lt;h1&gt;这是大标题2&lt;/h1&gt;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="FileResponse"><a href="#FileResponse" class="headerlink" title="FileResponse"></a>FileResponse</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/file&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_file</span>():</span><br><span class="line">    <span class="comment"># 可以设置一个BASE_Root，使用Path</span></span><br><span class="line">    file_path = Path(__file__).resolve().parents[<span class="number">1</span>] / <span class="string">&quot;1.png&quot;</span></span><br><span class="line">    <span class="keyword">return</span> FileResponse(file_path)</span><br></pre></td></tr></table></figure>
+
+<h5 id="自定义响应数据"><a href="#自定义响应数据" class="headerlink" title="自定义响应数据"></a>自定义响应数据</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response_model是路径装饰器的关键参数，通过Pydantic模型来严格定义和约束API端点的输出格式。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">News</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">	<span class="built_in">id</span>: <span class="built_in">str</span></span><br><span class="line">	title: <span class="built_in">str</span></span><br><span class="line">	content: <span class="built_in">str</span></span><br><span class="line">	</span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/news/&#123;id&#125;&quot;</span>, reponse_model=News</span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_news</span>(<span class="params"><span class="built_in">id</span>: <span class="built_in">str</span></span>):</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		<span class="string">&quot;id&quot;</span>: <span class="built_in">id</span>,</span><br><span class="line">		<span class="string">&quot;title&quot;</span>: <span class="string">&quot;t1&quot;</span>,</span><br><span class="line">        <span class="string">&quot;content&quot;</span>: <span class="string">&quot;这是一节新闻&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment"># 如果缺少报错，服务器500</span></span><br><span class="line"><span class="comment"># 如果多了字段会自动过滤掉</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">客户端引发的错误，使用fastapi.HTTPException来中断正常处理流程</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> HTTPException</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/news/&#123;id&#125;&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_news_by_id</span>(<span class="params"><span class="built_in">id</span>: <span class="built_in">int</span></span>):</span><br><span class="line">    id_list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">id</span> <span class="keyword">not</span> <span class="keyword">in</span> id_list:</span><br><span class="line">        <span class="keyword">raise</span> HTTPException(status_code=<span class="number">404</span>, detail=<span class="string">&quot;当前id不存在&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;id&quot;</span>:<span class="built_in">id</span>, <span class="string">&quot;content&quot;</span>:<span class="string">&quot;啦啦&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">detail在发生异常时，会被转成JSON传递给前端</span><br></pre></td></tr></table></figure>
+
+<h5 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">日志记录，身份认证，跨域处理，响应头处理，性能监控...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">中间件Middleware是一个在每次请求进入到FastAPI应用时都会被执行的函数</span><br><span class="line">在请求到达实际的路径操作之前（路由处理函数）运行。并且在响应返回给客户端之前再运行一次</span><br><span class="line">	 </span><br><span class="line">	 -----&gt;       -----&gt;</span><br><span class="line">客户端      中间件       路由处理函数</span><br><span class="line">     &lt;-----       &lt;-----</span><br><span class="line">     </span><br><span class="line">按代码顺序，中间件自上而下执行</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">中间件:函数的顶部使用装饰器@app.middleware(&quot;http&quot;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.middleware(<span class="params"><span class="string">&quot;http&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">middleware1</span>(<span class="params">request, call_next</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;--start--&quot;</span>)</span><br><span class="line">    response = <span class="keyword">await</span> call_next(request)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;--end--&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"><span class="comment"># request是请求</span></span><br><span class="line"><span class="comment"># call_next是传递请求给路径处理函数</span></span><br><span class="line"><span class="comment"># 二者是固定写法</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">多个中间件自下而上执行，依据的是代码顺序</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.middleware(<span class="params"><span class="string">&quot;http&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">middleware1</span>(<span class="params">request, call_next</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;middleware1 start&quot;</span>)</span><br><span class="line">    response = <span class="keyword">await</span> call_next(request)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;middleware1 end&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.middleware(<span class="params"><span class="string">&quot;http&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">middleware2</span>(<span class="params">request, call_next</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;middleware2 start&quot;</span>)</span><br><span class="line">    response = <span class="keyword">await</span> call_next(request)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;middleware2 end&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">middleware2 start</span></span><br><span class="line"><span class="string">middleware1 start</span></span><br><span class="line"><span class="string">middleware1 end</span></span><br><span class="line"><span class="string">middleware2 end</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">中间件对所有的请求都生效</span><br></pre></td></tr></table></figure>
+
+<h5 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用依赖注入来共享通用逻辑，复用代码逻辑</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">依赖注入只对注入了依赖的生效</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">依赖项:可重用的组件(类/函数),负责提供某种功能或者数据</span><br><span class="line">注入: FastAPI自动调用依赖项到路由处理</span><br><span class="line"></span><br><span class="line">应用场景:</span><br><span class="line">	处理请求参数，共享业务逻辑，安全和认证，共享数据库连接</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.创建依赖项 </span><br><span class="line">2.导入Depends</span><br><span class="line">3.声明依赖项</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI,Depends,Query</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">common_paramters</span>(<span class="params">skip: <span class="built_in">int</span>, limit: <span class="built_in">int</span> = Query(<span class="params">..., ge=<span class="number">3</span></span>)</span>)</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;skip&quot;</span>: skip,</span><br><span class="line">        <span class="string">&quot;limit&quot;</span>: limit</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/news/news_list&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_news</span>(<span class="params">commons=Depends(<span class="params">common_paramters</span>)</span>):</span><br><span class="line">    <span class="keyword">return</span>  commons</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/user/user_list&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">get_user</span>(<span class="params">commons=Depends(<span class="params">common_paramters</span>)</span>):</span><br><span class="line">    <span class="keyword">return</span> commons</span><br></pre></td></tr></table></figure>
+
+<h5 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORM(Object-RelationMapping，对象关系映射)用于在面向对象编程语言和关系型数据库之间建立映射，可以使用操作对象的方式与数据库交互，而无需编写复杂SQL</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">好处:</span><br><span class="line">	可读性高，代码简洁，自动处理数据库连接和事务，自动防止SQL注入攻击</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SQLAlchemy ORM: 功能最强，最灵活，企业级</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.安装:uv add &quot;sqlalchemy[asyncio]&quot; asyncmy</span><br><span class="line">	sqlalchemy[asyncio]</span><br><span class="line">	aiomysql(异步数据库驱动)</span><br><span class="line">	</span><br><span class="line">2.建库建表</span><br><span class="line">3.操作数据</span><br></pre></td></tr></table></figure>
+
+<h5 id="建库"><a href="#建库" class="headerlink" title="建库"></a>建库</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用create_async_engine</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy.ext.asyncio <span class="keyword">import</span> create_async_engine</span><br><span class="line"></span><br><span class="line">ASYNC_DATABASE_URL = <span class="string">&quot;mysql+asyncmy://root:1234@192.168.242.129:3307/fastapi_test?charset=utf8&quot;</span></span><br><span class="line"></span><br><span class="line">async_engine = create_async_engine(</span><br><span class="line">	ASYNC_DATABASE_URL,</span><br><span class="line">	echo = <span class="literal">True</span>, <span class="comment">#输出MySQL日志</span></span><br><span class="line">	pool_size = <span class="number">10</span>, <span class="comment"># 设置连接池保存的持久连接数</span></span><br><span class="line">	max_overflow = <span class="number">20</span>, <span class="comment"># 设置连接池允许创建的额外连接数</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h5 id="定义模型类"><a href="#定义模型类" class="headerlink" title="定义模型类"></a>定义模型类</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.基类，继承DeclarativeBase（包含通用属性和字段的映射）</span><br><span class="line">2.定义数据表对象的模型类</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> DeclarativeBase,Mapped,mapped_column</span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> func,DateTime,String,Float,Integer</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># 表不存在，自动创建；已经存在，跳过，不做任何操作</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span>(<span class="title class_ inherited__">DeclarativeBase</span>):</span><br><span class="line">    __abstract__ = <span class="literal">True</span>  <span class="comment"># 关键：标记为抽象基类，不会单独生成表</span></span><br><span class="line">    create_time: Mapped[datetime] = mapped_column(DateTime, default=func.now(),comment=<span class="string">&quot;创建时间&quot;</span>)</span><br><span class="line">    update_time: Mapped[datetime] = mapped_column(DateTime, default=func.now(),onupdate=func.now(), comment=<span class="string">&quot;更新时间&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Book</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    __tablename__ = <span class="string">&quot;book&quot;</span></span><br><span class="line">    <span class="built_in">id</span>: Mapped[<span class="built_in">int</span>] = mapped_column(Integer,primary_key=<span class="literal">True</span>, comment=<span class="string">&quot;书籍id&quot;</span>)</span><br><span class="line">    bookname: Mapped[<span class="built_in">str</span>] = mapped_column(String(<span class="number">255</span>), comment=<span class="string">&quot;书名&quot;</span>, nullable=<span class="literal">False</span>)</span><br><span class="line">    author: Mapped[<span class="built_in">str</span>] = mapped_column(String(<span class="number">255</span>), comment=<span class="string">&quot;作者&quot;</span>, nullable=<span class="literal">False</span>)</span><br><span class="line">    price: Mapped[<span class="built_in">float</span>] = mapped_column(Float,comment=<span class="string">&quot;书籍的价格&quot;</span>,  nullable=<span class="literal">False</span>)</span><br><span class="line">    publisher: Mapped[<span class="built_in">str</span>] = mapped_column(String(<span class="number">255</span>), comment=<span class="string">&quot;出版社&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    __tablename__ = <span class="string">&quot;user&quot;</span></span><br><span class="line">    <span class="built_in">id</span>: Mapped[<span class="built_in">int</span>] = mapped_column(Integer,primary_key=<span class="literal">True</span>,comment=<span class="string">&quot;用户id&quot;</span> ) </span><br><span class="line">    username: Mapped[<span class="built_in">str</span>] = mapped_column(String(<span class="number">255</span>), nullable=<span class="literal">False</span>,comment=<span class="string">&quot;用户名&quot;</span>)</span><br><span class="line">    password: Mapped[<span class="built_in">str</span>] = mapped_column(String(<span class="number">255</span>), nullable=<span class="literal">False</span>,comment=<span class="string">&quot;用户密码&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义建表函数</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">create_table</span>():</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> async_engine.begin() <span class="keyword">as</span> conn:</span><br><span class="line">        <span class="keyword">await</span> conn.run_sync(Base.metadata.create_all) <span class="comment">#使用Base模型类的元数据创建</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.on_event(<span class="params"><span class="string">&quot;startup&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">startup_event</span>():</span><br><span class="line">    <span class="keyword">await</span> create_table()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Base.metadata会自动收集所有继承Base的ORM模型类（Book、User），调用 create_all()时会遍历全部收集到的表：</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI,Depends,Query</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.ext.asyncio <span class="keyword">import</span> create_async_engine</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> DeclarativeBase,Mapped,mapped_column</span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> func,DateTime,String,Float,Integer</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建FastAPI实例</span></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line">ASYNC_DATABASE_URL = <span class="string">&quot;mysql+asyncmy://root:root@192.168.242.129:3307/fastapi_test?charset=utf8&quot;</span></span><br><span class="line">async_engine = create_async_engine(</span><br><span class="line">    url= ASYNC_DATABASE_URL,</span><br><span class="line">    echo= <span class="literal">True</span>,</span><br><span class="line">    pool_size = <span class="number">5</span>,</span><br><span class="line">    max_overflow= <span class="number">5</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 表不存在，自动创建；已经存在，跳过，不做任何操作</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span>(<span class="title class_ inherited__">DeclarativeBase</span>):</span><br><span class="line">    __abstract__ = <span class="literal">True</span>  <span class="comment"># 关键：标记为抽象基类，不会单独生成表</span></span><br><span class="line">    create_time: Mapped[datetime] = mapped_column(DateTime, default=func.now(),comment=<span class="string">&quot;创建时间&quot;</span>)</span><br><span class="line">    update_time: Mapped[datetime] = mapped_column(DateTime, default=func.now(),onupdate=func.now(), comment=<span class="string">&quot;更新时间&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Book</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    __tablename__ = <span class="string">&quot;book&quot;</span></span><br><span class="line">    <span class="built_in">id</span>: Mapped[<span class="built_in">int</span>] = mapped_column(Integer,primary_key=<span class="literal">True</span>, comment=<span class="string">&quot;书籍id&quot;</span>)</span><br><span class="line">    bookname: Mapped[<span class="built_in">str</span>] = mapped_column(String(<span class="number">255</span>), comment=<span class="string">&quot;书名&quot;</span>, nullable=<span class="literal">False</span>)</span><br><span class="line">    author: Mapped[<span class="built_in">str</span>] = mapped_column(String(<span class="number">255</span>), comment=<span class="string">&quot;作者&quot;</span>, nullable=<span class="literal">False</span>)</span><br><span class="line">    price: Mapped[<span class="built_in">float</span>] = mapped_column(Float,comment=<span class="string">&quot;书籍的价格&quot;</span>,  nullable=<span class="literal">False</span>)</span><br><span class="line">    publisher: Mapped[<span class="built_in">str</span>] = mapped_column(String(<span class="number">255</span>), comment=<span class="string">&quot;出版社&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    __tablename__ = <span class="string">&quot;user&quot;</span></span><br><span class="line">    <span class="built_in">id</span>: Mapped[<span class="built_in">int</span>] = mapped_column(Integer,primary_key=<span class="literal">True</span>,comment=<span class="string">&quot;用户id&quot;</span> ) </span><br><span class="line">    username: Mapped[<span class="built_in">str</span>] = mapped_column(String(<span class="number">255</span>), nullable=<span class="literal">False</span>,comment=<span class="string">&quot;用户名&quot;</span>)</span><br><span class="line">    password: Mapped[<span class="built_in">str</span>] = mapped_column(String(<span class="number">255</span>), nullable=<span class="literal">False</span>,comment=<span class="string">&quot;用户密码&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义建表函数</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">create_table</span>():</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> async_engine.begin() <span class="keyword">as</span> conn:</span><br><span class="line">        <span class="keyword">await</span> conn.run_sync(Base.metadata.create_all) <span class="comment">#使用Base模型类的元数据创建</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.on_event(<span class="params"><span class="string">&quot;startup&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">startup_event</span>():</span><br><span class="line">    <span class="keyword">await</span> create_table()</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;msg&quot;</span>: <span class="string">&quot;hello&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/10/05/FastAPI/" data-id="cmuw3lft20000wwtye6m54r5i" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/10/02/RAG/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">October 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/09/">September 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/08/">August 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">July 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">June 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/10/05/FastAPI/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/02/RAG/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2026/09/15/DeepAgents/">DeepAgents</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/27/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计</a>
+          </li>
+        
+          <li>
+            <a href="/2026/08/27/mysql/">电商问数mysql</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
