@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>sse | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="SSEStreamingResponse12345678910111213import jsonfrom fastapi.responses import StreamingResponseasync def generate():    yield f&quot;data: &#123;json.dumps(&#123;&#x27;content&#x27;: &#x27;你好&#x27;&amp;#1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sse">
+<meta property="og:url" content="http://example.com/2026/10/26/sse/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SSEStreamingResponse12345678910111213import jsonfrom fastapi.responses import StreamingResponseasync def generate():    yield f&quot;data: &#123;json.dumps(&#123;&#x27;content&#x27;: &#x27;你好&#x27;&amp;#1">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-10-26T14:49:07.136Z">
+<meta property="article:modified_time" content="2026-10-27T00:21:39.176Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-sse" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/10/26/sse/" class="article-date">
+  <time class="dt-published" datetime="2026-10-26T14:49:07.136Z" itemprop="datePublished">2026-10-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      sse
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h5 id="SSE"><a href="#SSE" class="headerlink" title="SSE"></a>SSE</h5><h5 id="StreamingResponse"><a href="#StreamingResponse" class="headerlink" title="StreamingResponse"></a>StreamingResponse</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> fastapi.responses <span class="keyword">import</span> StreamingResponse</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">generate</span>():</span><br><span class="line">    <span class="keyword">yield</span> <span class="string">f&quot;data: <span class="subst">&#123;json.dumps(&#123;<span class="string">&#x27;content&#x27;</span>: <span class="string">&#x27;你好&#x27;</span>&#125;</span>, ensure_ascii=False)&#125;\n\n&quot;</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="string">f&quot;data: <span class="subst">&#123;json.dumps(&#123;<span class="string">&#x27;content&#x27;</span>: <span class="string">&#x27;世界&#x27;</span>&#125;</span>, ensure_ascii=False)&#125;\n\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@router.post(<span class="params"><span class="string">&quot;/stream&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">chat_stream</span>():</span><br><span class="line">    <span class="keyword">return</span> StreamingResponse(</span><br><span class="line">        generate(),</span><br><span class="line">        media_type=<span class="string">&quot;text/event-stream&quot;</span>,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">需要自己手动拼接sse处理格式,done事件也需要拼接，更底层、更灵活</span><br></pre></td></tr></table></figure>
+
+<h5 id="EventSourceResponse"><a href="#EventSourceResponse" class="headerlink" title="EventSourceResponse"></a>EventSourceResponse</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">自动处理SSE事件格式,event可以直接设置token和done</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections.abc <span class="keyword">import</span> AsyncIterator</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> APIRouter</span><br><span class="line"><span class="keyword">from</span> fastapi.sse <span class="keyword">import</span> ServerSentEvent</span><br><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line">router = APIRouter(prefix=<span class="string">&quot;/api/chat&quot;</span>, tags=[<span class="string">&quot;AI客服&quot;</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ChatRequest</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    session_id: <span class="built_in">str</span></span><br><span class="line">    message: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">mock_ai_stream</span>(<span class="params">message: <span class="built_in">str</span></span>) -&gt; AsyncIterator[<span class="built_in">str</span>]:</span><br><span class="line">    answer = <span class="string">f&quot;你好，关于你的问题：<span class="subst">&#123;message&#125;</span>，我来帮你查询。&quot;</span></span><br><span class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> answer:</span><br><span class="line">        <span class="keyword">yield</span> char</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@router.post(<span class="params"><span class="string">&quot;/stream&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">chat_stream</span>(<span class="params">request: ChatRequest</span>) -&gt; AsyncIterator[ServerSentEvent]:</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">for</span> chunk <span class="keyword">in</span> mock_ai_stream(request.message):</span><br><span class="line">        <span class="keyword">yield</span> ServerSentEvent(</span><br><span class="line">            data=&#123;<span class="string">&quot;content&quot;</span>: chunk&#125;,</span><br><span class="line">            event=<span class="string">&quot;token&quot;</span>,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> ServerSentEvent(</span><br><span class="line">        data=&#123;<span class="string">&quot;status&quot;</span>: <span class="string">&quot;completed&quot;</span>&#125;,</span><br><span class="line">        event=<span class="string">&quot;done&quot;</span>,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<h5 id="session-id"><a href="#session-id" class="headerlink" title="session_id"></a>session_id</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用户新建会话时,生成session_id</span><br><span class="line">request_id在http中间件中生成,使用ContextVar</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">专门提供一个接口给前端</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/10/26/sse/" data-id="cmvpy6w4d000e3oty6r8od0vm" data-title="sse" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/10/16/openai_agent/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">openai_agent</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">October 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/09/">September 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/08/">August 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">July 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">June 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/10/26/sse/">sse</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/16/openai_agent/">openai_agent</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/15/claude_code/">Cladue Code</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/08/toutiao/">头条AI</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/05/FastAPI/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
