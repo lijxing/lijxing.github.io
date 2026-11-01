@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>FastAPI | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="FastAPI12FastAPI是一个基于Python的框架原生支持异步，使用pydantic做类型校验，自动生成可交互式文档  12345同步和异步:	同步是阻塞式，任务只能一个一个完成	异步是非阻塞式，任务是交叉执行		异步发起IO后，立刻释放当前线程，去处理其他任务，不用原地死等  123456async def func_async():    start &#x3D; time.time()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="FastAPI">
 <meta property="og:url" content="http://example.com/2026/10/05/FastAPI/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="FastAPI12FastAPI是一个基于Python的框架原生支持异步，使用pydantic做类型校验，自动生成可交互式文档  12345同步和异步:	同步是阻塞式，任务只能一个一个完成	异步是非阻塞式，任务是交叉执行		异步发起IO后，立刻释放当前线程，去处理其他任务，不用原地死等  123456async def func_async():    start &#x3D; time.time()">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-10-04T23:37:44.338Z">
-<meta property="article:modified_time" content="2026-10-24T03:45:32.859Z">
+<meta property="article:modified_time" content="2026-11-01T07:12:03.656Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -82,6 +82,16 @@
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      FastAPI
+    </h1>
+  
+
+      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -261,6 +271,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">中间件Middleware是一个在每次请求进入到FastAPI应用时都会被执行的函数</span><br><span class="line">在请求到达实际的路径操作之前（路由处理函数）运行。并且在响应返回给客户端之前再运行一次</span><br><span class="line">	 </span><br><span class="line">	 -----&gt;       -----&gt;</span><br><span class="line">客户端      中间件       路由处理函数</span><br><span class="line">     &lt;-----       &lt;-----</span><br><span class="line">     </span><br><span class="line">按代码顺序，中间件自上而下执行</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">中间件:函数的顶部使用装饰器@app.middleware(&quot;http&quot;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A 请求前</span><br><span class="line">    B 请求前</span><br><span class="line">        C 请求前</span><br><span class="line">            路由函数执行</span><br><span class="line">        C 响应后</span><br><span class="line">    B 响应后</span><br><span class="line">A 响应后</span><br><span class="line"></span><br><span class="line">洋葱模型</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.middleware(<span class="params"><span class="string">&quot;http&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">middleware1</span>(<span class="params">request, call_next</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;--start--&quot;</span>)</span><br><span class="line">    response = <span class="keyword">await</span> call_next(request)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;--end--&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"><span class="comment"># request是请求</span></span><br><span class="line"><span class="comment"># call_next是传递请求给路径处理函数</span></span><br><span class="line"><span class="comment"># 二者是固定写法</span></span><br></pre></td></tr></table></figure>
 
@@ -519,7 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/10/05/FastAPI/" data-id="cmvpy6w3x00013otyayqj31vl" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/10/05/FastAPI/" data-id="cmvxhv8i00000moty8fvs7jzv" data-title="FastAPI" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -541,7 +553,7 @@
   
     <a href="/2026/10/02/RAG/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">RAG</div>
     </a>
   
 </nav>
@@ -595,7 +607,7 @@
           </li>
         
           <li>
-            <a href="/2026/10/05/FastAPI/">(no title)</a>
+            <a href="/2026/10/05/FastAPI/">FastAPI</a>
           </li>
         
       </ul>

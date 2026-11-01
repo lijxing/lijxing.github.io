@@ -1334,7 +1334,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/07/28/%E7%94%B5%E5%95%86%E9%97%AE%E6%95%B0/" data-id="cmvpy6w4e000h3otyfcc150x0" data-title="电商问数" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/07/28/%E7%94%B5%E5%95%86%E9%97%AE%E6%95%B0/" data-id="cmvxhv8ig000hmoty2iv8cb73" data-title="电商问数" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -2737,6 +2737,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Runnable 是 LangChain 中统一的“可执行组件”抽象。Prompt、Model、Parser、Tool、Chain 之所以能被统一调用，是因为它们在 Runnable 这层被约束成了同一种接口风格。</span><br><span class="line">LCEL 是把多个 Runnable 组合成链的表达式语言。它最核心的价值，不只是 | 写起来简洁，而是让流程变得声明式、可组合、可扩展。</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">常见链结构 中，顺序链是基础，分支链解决路由问题，多步串行链解决前后步骤依赖问题，并行链解决多路同时处理问题，RunnableLambda 解决自定义逻辑如何插入链；重试与兜底则解决链路稳定性问题。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> langgraph.runtime <span class="keyword">import</span> Runtime</span><br><span class="line"><span class="keyword">from</span> langchain_core.prompts <span class="keyword">import</span> PromptTemplate</span><br><span class="line"><span class="keyword">from</span> langchain_core.runnables <span class="keyword">import</span> RunnableLambda</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app.agent.context <span class="keyword">import</span> DataAgentContext</span><br><span class="line"><span class="keyword">from</span> app.agent.state <span class="keyword">import</span> DataAgentState</span><br><span class="line"></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mock_failure</span>(<span class="params">result</span>):</span><br><span class="line">    <span class="keyword">global</span> i</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;第 <span class="subst">&#123;i&#125;</span> 次校验&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> i &lt; <span class="number">13</span>:</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">raise</span> RuntimeError(<span class="string">&quot;模拟执行失败&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;校验通过&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">retry_test</span>(<span class="params">state: DataAgentState, runtime: Runtime[DataAgentContext]</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;节点执行!&quot;</span>)</span><br><span class="line">    <span class="keyword">global</span> i</span><br><span class="line">    wirter = runtime.stream_writer</span><br><span class="line">    step = <span class="string">&quot;重试节点测试&quot;</span></span><br><span class="line">    query = state[<span class="string">&quot;query&quot;</span>]</span><br><span class="line">    llm = runtime.context[<span class="string">&quot;llm&quot;</span>]</span><br><span class="line">    wirter(&#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;process&quot;</span>,</span><br><span class="line">        <span class="string">&quot;step&quot;</span>: step,</span><br><span class="line">        <span class="string">&quot;status&quot;</span>: <span class="string">&quot;running&quot;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    prompt = PromptTemplate(</span><br><span class="line">        template=<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        你是一个智能助手，你需要帮助用户解答用户问题,</span></span><br><span class="line"><span class="string">        用户问题: &#123;query&#125;</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span>,</span><br><span class="line">        input_variables = [<span class="string">&quot;query&quot;</span>]</span><br><span class="line">    )</span><br><span class="line">    chain = prompt | llm</span><br><span class="line">   <span class="comment"># with_retry只捕获异常，如果多次重试还是失败会抛出异常</span></span><br><span class="line">    safe_chain = (chain | RunnableLambda(mock_failure)).with_retry(</span><br><span class="line">        stop_after_attempt=<span class="number">3</span>,</span><br><span class="line">        retry_if_exception_type=(RuntimeError,),</span><br><span class="line">    )   </span><br><span class="line"></span><br><span class="line">    result = <span class="keyword">await</span> safe_chain.ainvoke(&#123;<span class="string">&quot;query&quot;</span>: query&#125;)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;finshed,重试结束 <span class="subst">&#123;i&#125;</span>&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;test_success&quot;</span>: <span class="literal">True</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="记忆与对话"><a href="#记忆与对话" class="headerlink" title="记忆与对话"></a>记忆与对话</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">记忆的作用:</span><br><span class="line">1.解决上下文连续性,知道上一轮说过什么</span><br><span class="line">2.会话个性化,让模型记住用户的信息和偏好</span><br><span class="line">3.多步任务承接,将上一步的结果作为后一步的输入</span><br></pre></td></tr></table></figure>
 
@@ -5215,10 +5217,18 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Skill 的关键机制是渐进式加载：先看名称和描述，任务匹配后再读取完整 SKILL.md，真正需要时才读取资源或运行脚本。这样既节省上下文，也方便专业能力在不同 Agent 间复用。</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Skill 往往不是单独使用，而是和 Tool、MCP、Memory、Subagent、中间件一起组成完整智能体系统。判断是否要写 Skill 的核心标准是：这套能力是否会重复使用，是否有明确触发边界，是否有固定流程或输出格式，是否值得从主提示词里拆出来。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">topic_id: 主题id</span><br><span class="line">topic: &quot;&quot;</span><br><span class="line">original_chat: &#123;原始对话&#125;</span><br><span class="line">time_at: 发生的时间</span><br><span class="line">connect_topic_id_list: [本轮对话中，利用到和参考了的对话id]</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">topic_id: 1</span><br><span class="line">topic: &quot;用户为出油烦恼，推荐了控油产品&quot;</span><br><span class="line">original_chat: &#123;原始对话&#125;</span><br><span class="line">time_at: 发生的时间</span><br><span class="line">connect_topic_id_list: []</span><br><span class="line">is_connected: True  # 1被3引用</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">topic_id: 2</span><br><span class="line">topic: &quot;购买了一款护手霜&quot;</span><br><span class="line">original_chat: &#123;原始对话&#125;</span><br><span class="line">time_at: 发生的时间</span><br><span class="line">connect_topic_id_list: [本轮对话中，利用到和参考了的对话id]</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">topic_id: 3</span><br><span class="line">topic: &quot;用户脸上出油，推荐了控油产品&quot;</span><br><span class="line">original_chat: &#123;原始对话&#125;</span><br><span class="line">time_at: 发生的时间</span><br><span class="line">connect_topic_id_list: [1]</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">topic_id: 4</span><br><span class="line">topic: &quot;护手霜订单问题&quot;</span><br><span class="line">original_chat: &#123;原始对话&#125;</span><br><span class="line">time_at: 发生的时间</span><br><span class="line">connect_topic_id_list: [] # 无需记忆系统，直接去查数据库订单</span><br><span class="line">&#125;</span><br><span class="line">这时用户问，我的皮肤老是出油，从time_at最新的时间，一个一个和topic进行匹配，召回</span><br><span class="line">找到topic_id = 3，停止，因为3记录了1.3去找1，1没有引用，直接停止，使用3,1，connect_topic_id_list: 写入3。</span><br></pre></td></tr></table></figure>
+
+<h5 id="python的迭代方式"><a href="#python的迭代方式" class="headerlink" title="python的迭代方式"></a>python的迭代方式</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 普通迭代</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate</span>():</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        <span class="keyword">yield</span> i</span><br><span class="line">        </span><br><span class="line"><span class="keyword">for</span> item generate():</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 异步迭代</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">generate</span>():</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        <span class="keyword">yield</span> i</span><br><span class="line">        </span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">test</span>():</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">for</span> item <span class="keyword">in</span> generate():</span><br><span class="line">        <span class="built_in">print</span>(item)</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/06/17/LangchainAndLanggraph/" data-id="cmvpy6w4c000c3oty22si5idz" data-title="langchain" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/06/17/LangchainAndLanggraph/" data-id="cmvxhv8ic0009moty9n063h2y" data-title="langchain" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -6422,7 +6432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/06/08/agent/" data-id="cmvpy6w4800063oty667h1crc" data-title="文章标题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/06/08/agent/" data-id="cmvxhv8ia0005moty5ny3bs6j" data-title="文章标题" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -6448,7 +6458,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/01/30/T2DG/">Untitled</a>
+      <a class="p-name article-title" href="/2026/01/30/T2DG/">T2DG</a>
     </h1>
   
 
@@ -6551,7 +6561,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/30/T2DG/" data-id="cmvpy6w4000043oty5iyqdmd4" data-title="Untitled" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/01/30/T2DG/" data-id="cmvxhv8ia0004motygumd08ps" data-title="T2DG" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -6691,7 +6701,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/11/RPG/" data-id="cmvpy6w4000033oty196lgx1z" data-title="RPG" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/01/11/RPG/" data-id="cmvxhv8i70003motyah7obcpb" data-title="RPG" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -7625,7 +7635,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/10/cpp%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" data-id="cmvpy6w4900073oty711a8pe8" data-title="CPP核心" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/01/10/cpp%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" data-id="cmvxhv8id000cmoty73rb4lz0" data-title="CPP核心" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -7969,7 +7979,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/10/unity/" data-id="cmvpy6w4e000f3oty1c2bf7q8" data-title="unity" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/01/10/unity/" data-id="cmvxhv8ie000fmotyaz2w8dj3" data-title="unity" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -8585,7 +8595,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/10/csharp/" data-id="cmvpy6w4a00083otyhcnw2jt8" data-title="csharp" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/01/10/csharp/" data-id="cmvxhv8id000dmoty08es272l" data-title="csharp" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -8649,7 +8659,7 @@
           </li>
         
           <li>
-            <a href="/2026/10/05/FastAPI/">(no title)</a>
+            <a href="/2026/10/05/FastAPI/">FastAPI</a>
           </li>
         
       </ul>
