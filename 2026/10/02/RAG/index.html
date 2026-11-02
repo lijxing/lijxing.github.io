@@ -14,7 +14,7 @@
 <meta property="og:description" content="RAG三要素123索引：搭建知识库，切割知识，选择合适的Embedding模型检索：找到合适的参考文档，检索方式的选择生成：整合问题和参考文档，输入大模型得到答案，提示词构建和大模型选择  PDF文件的处理1234567891011PDF分为两种，一种是文字型PDF，一种是图片型PDF文字型PDF:保存的是文字字符，字体，坐标等，可以直接复制文字，不需要OCR，直接提取文本即可。（pypdf可以处">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-10-02T01:43:16.341Z">
-<meta property="article:modified_time" content="2026-11-01T07:10:31.206Z">
+<meta property="article:modified_time" content="2026-11-01T07:41:20.628Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -101,7 +101,7 @@
 
 <h5 id="准备知识库"><a href="#准备知识库" class="headerlink" title="准备知识库"></a>准备知识库</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.知识来源: Word,PDF,Excel...</span><br><span class="line">2.数据的来源: 文字，表格，图片，视频(考虑多模态)...</span><br><span class="line">3.数据清洗: 大模型容错高，先粗洗（降噪，标准化，结构化，去重，合规）</span><br><span class="line"></span><br><span class="line">清洗要在分段前</span><br></pre></td></tr></table></figure>
 
-<h5 id="文档切分"><a href="#文档切分" class="headerlink" title="文档切分"></a>文档切分</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">核心: 语义连贯性</span><br><span class="line">保证划分后的同一段文本里，语义是统一的，完全的</span><br><span class="line">太长语义不统一，影响检索效果(文本块中语义太多)</span><br><span class="line">太短语义不完全，影响生成效果</span><br></pre></td></tr></table></figure>
+<h5 id="文档切分"><a href="#文档切分" class="headerlink" title="文档切分"></a>文档切分</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">核心: 语义连贯性</span><br><span class="line">保证划分后的同一段文本里，语义是统一的，完全的</span><br><span class="line">太长语义不统一，影响检索效果(文本块中语义太多)</span><br><span class="line">太短语义不完全，影响生成效果</span><br><span class="line">chunk按token一般是512最好，</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -146,7 +146,7 @@
 
 <h5 id="优化方案"><a href="#优化方案" class="headerlink" title="优化方案"></a>优化方案</h5><h5 id="检索优化"><a href="#检索优化" class="headerlink" title="检索优化"></a>检索优化</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">检索优化:</span><br><span class="line">	small to big:</span><br><span class="line">	多路召回</span><br><span class="line">	Rerank</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">small to big:检索时小文本块，生成时大文本块：</span><br><span class="line"></span><br><span class="line">	1. 摘要检索（Chunk 摘要入库）</span><br><span class="line">		处理对象：知识库文档块（入库侧，离线预处理阶段）</span><br><span class="line">		操作：给每一段原始 Chunk 使用LLM生成简短摘要，把「摘要文本」也向量化存入向量库；</span><br><span class="line">		检索逻辑：用户提问同时检索「原文向量」+「摘要向量」两路，互补召回。</span><br><span class="line">	2. 子问题检索（问题分解检索）</span><br><span class="line">		处理对象：用户的查询问句（在线检索阶段，实时）</span><br><span class="line">		操作：大模型把复杂用户问句拆成多个简短子问题，每条子问题分别去检索知识库；</span><br><span class="line">		检索逻辑：多路子查询并行拉取段落，合并所有结果再回答。</span><br><span class="line">		</span><br><span class="line">	3.句子窗口的检索：</span><br><span class="line">		最小的检索单元不是大块的chunk，而是单句/短句，检索命中某一句后,把这句前后相邻的若干句子(窗口)一起拿出来作为完整上下文使用。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">small to big:检索时小文本块，生成时大文本块：</span><br><span class="line">父块1024，对父块进行递归再切，query匹配子块，拼回父块。(存储翻倍，父子都存储)</span><br><span class="line"></span><br><span class="line">	1. 摘要检索（Chunk 摘要入库）</span><br><span class="line">		处理对象：知识库文档块（入库侧，离线预处理阶段）</span><br><span class="line">		操作：给每一段原始 Chunk 使用LLM生成简短摘要，把「摘要文本」也向量化存入向量库；</span><br><span class="line">		检索逻辑：用户提问同时检索「原文向量」+「摘要向量」两路，互补召回。</span><br><span class="line">	2. 子问题检索（问题分解检索）</span><br><span class="line">		处理对象：用户的查询问句（在线检索阶段，实时）</span><br><span class="line">		操作：大模型把复杂用户问句拆成多个简短子问题，每条子问题分别去检索知识库；</span><br><span class="line">		检索逻辑：多路子查询并行拉取段落，合并所有结果再回答。</span><br><span class="line">		</span><br><span class="line">	3.句子窗口的检索：</span><br><span class="line">		最小的检索单元不是大块的chunk，而是单句/短句，检索命中某一句后,把这句前后相邻的若干句子(窗口)一起拿出来作为完整上下文使用。</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">多路召回:</span><br><span class="line">	关键词检索</span><br><span class="line">	相似度检索</span><br><span class="line">	其他查询</span><br><span class="line">	</span><br><span class="line">	得分 = 1 / 排名（排在越前，总分愈高，单路第一名收益爆炸）</span><br><span class="line">		比如3类检索，第一类时返回的顺序是文档1，2，4；第二类返回的顺序是文档3，2，1；第三类检索返回的顺序是文档4，2，1。</span><br><span class="line">		文档1的得分 = 1 / 1 + 1 / 3 + 1/ 3 = 1.67分</span><br><span class="line">		文档2的得分 = 1/ 2 + 1 / 2 + 1 / 2 = 1.50分</span><br><span class="line">		...</span><br><span class="line">		文档2每次都排第二，非常稳定，但文档1两次第3，一次第一，使用平滑指数抹平差异</span><br><span class="line">		</span><br><span class="line">	平滑指数：自己设置一个，分母加常数，缩小分差</span><br><span class="line">	RRF算法: 平滑得分=西格玛[ 1/(排名+平滑指数)]</span><br><span class="line">	</span><br><span class="line">	标准通用值：k=60（Milvus、Elasticsearch 官方默认），平衡单路高分与多路重合</span><br><span class="line">	文档1 = 1 / (60 + 1) + 1 /(60 + 3) + 1 / (60 + 3) = 0.04814</span><br><span class="line">	文档2 = 1 / (60 + 2) + 1 /(60 + 2) + 1 / (60 + 2) = 0.04839</span><br></pre></td></tr></table></figure>
 
@@ -228,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/10/02/RAG/" data-id="cmvxhv8i40001moty315kc7o9" data-title="RAG" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/10/02/RAG/" data-id="cmvyihtru0003doty6d3xgb9g" data-title="RAG" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -275,7 +275,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">October 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/09/">September 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/08/">August 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">July 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">June 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">November 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">October 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/09/">September 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/08/">August 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">July 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">June 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
     </div>
   </div>
 
@@ -286,6 +286,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2026/11/01/redis/">Redis</a>
+          </li>
         
           <li>
             <a href="/2026/10/26/sse/">sse</a>
@@ -301,10 +305,6 @@
         
           <li>
             <a href="/2026/10/08/toutiao/">头条AI</a>
-          </li>
-        
-          <li>
-            <a href="/2026/10/05/FastAPI/">FastAPI</a>
           </li>
         
       </ul>

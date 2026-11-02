@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Redis | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1docker exec -it diy_store_redis redis-cli -a reona  数据结构12key-value:	key一般是String类型，value的类型多种多样  1234567891011常见:	基本类型：		String		Hash		List		Set		SortedSet	特殊类型		GEO		BitMap		HyperLog  通用命令1使用 help">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis">
+<meta property="og:url" content="http://example.com/2026/11/01/redis/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1docker exec -it diy_store_redis redis-cli -a reona  数据结构12key-value:	key一般是String类型，value的类型多种多样  1234567891011常见:	基本类型：		String		Hash		List		Set		SortedSet	特殊类型		GEO		BitMap		HyperLog  通用命令1使用 help">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-01T07:50:42.292Z">
+<meta property="article:modified_time" content="2026-11-02T00:14:55.448Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/11/01/redis/" class="article-date">
+  <time class="dt-published" datetime="2026-11-01T07:50:42.292Z" itemprop="datePublished">2026-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Redis
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it diy_store_redis redis-cli -a reona</span><br></pre></td></tr></table></figure>
+
+<h5 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">key-value:</span><br><span class="line">	key一般是String类型，value的类型多种多样</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">常见:</span><br><span class="line">	基本类型：</span><br><span class="line">		String</span><br><span class="line">		Hash</span><br><span class="line">		List</span><br><span class="line">		Set</span><br><span class="line">		SortedSet</span><br><span class="line">	特殊类型</span><br><span class="line">		GEO</span><br><span class="line">		BitMap</span><br><span class="line">		HyperLog</span><br></pre></td></tr></table></figure>
+
+<h5 id="通用命令"><a href="#通用命令" class="headerlink" title="通用命令"></a>通用命令</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 help [command]可以查看一个命令的具体做法</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">KEYS: 查看符合模板的的所有key，不建议在生产设备上使用</span><br><span class="line">DEL: 删除一个指定的Key</span><br><span class="line">EXISTS: 判断一个Key是否存在</span><br><span class="line">EXPIRE: 给一个Key设置有效期，有效期到时回自动删除</span><br><span class="line">TTL: 查看一个Key的剩余有效期,返回秒,返回-2代表被删除了,-1永久有效</span><br></pre></td></tr></table></figure>
+
+<h5 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符串类型</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">value是字符串时:依据字符串的格式不同，又可以分为3类</span><br><span class="line">	string--普通字符串（json对象要先转为json字符串进行存储）</span><br><span class="line">	int--整数类型,可以自增和自减</span><br><span class="line">	float--浮点类型,可以自增和自减</span><br><span class="line">底层都是字节数组存储，字符串类型的最大空间不超过512M</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SET: 添加或者修改一个已经存在的String键值对</span><br><span class="line">GET: 根据Key获取String类型的value</span><br><span class="line">MSET: 批量添加多个String类型的键值对</span><br><span class="line">MSGET: 批量获取多个Key的String类型的value</span><br><span class="line">INCR: 让一个整型的Key自增1</span><br><span class="line">INCRBY: 让一个整型的Key按指定的步长自增</span><br><span class="line">INCRBYFLOAT: 让一个浮点类型的数字按指定的步长自增</span><br><span class="line">SETNX: 添加一个String类型的键值对，前提是这个key不存在，否则不执行</span><br><span class="line">SETEX: 添加一个String类型的键值对，并指定有效期</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set heima.config &#x27;&#123;&quot;name&quot;:&quot;tim&quot;&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h5 id="redis中区分不同类型的key"><a href="#redis中区分不同类型的key" class="headerlink" title="redis中区分不同类型的key"></a>redis中区分不同类型的key</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis的key允许有多个单词形成层级结构,多个单词之间使用&#x27;:&#x27;隔开</span><br><span class="line">	项目名:业务名:类型:id</span><br></pre></td></tr></table></figure>
+
+<h5 id="Hash类型"><a href="#Hash类型" class="headerlink" title="Hash类型"></a>Hash类型</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hash类型，也叫散列，其中value是一个无序字典，类似于java的HashMap结构</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hash结构可以将对象中的每个字段独立存储，可以针对单个字段做CRUD</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">HSET key field value:添加或者修改hash类型的field的值</span><br><span class="line">HGET key field: 获取一个hash类型key的field的值</span><br><span class="line">HMSET 批量添加多个hash类型key的field的值</span><br><span class="line">HMGET 批量获取多个hash类型的key的field的值</span><br><span class="line">HGETALL 获取一个hash类型的key中所有field和value</span><br><span class="line">HKEYS 获取一个hash类型key中的所有field</span><br><span class="line">HVALS 获取一个hash类型中key中的所有value</span><br><span class="line">HINCRBY 让一个hash类型的key的字段按指定的步长自增</span><br><span class="line">HSETNX 添加一个hash类型的key的field值，前提是这个field不存在</span><br></pre></td></tr></table></figure>
+
+<h5 id="List"><a href="#List" class="headerlink" title="List"></a>List</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Redis中的List类型和java中的LinkedList类似,可以看作一个双向链表，支持正向检索和反向检索</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">有序，元素可以重复，插入和删除快，查询一般</span><br><span class="line"></span><br><span class="line">常用来存储有序数据，例如：朋友圈点赞，评论列表 </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LPUSH:列表左边插入一个元素</span><br><span class="line">LPOP:移除列表左边的一个元素,没有返回nil</span><br><span class="line">RPUSH:列表右边插入一个元素</span><br><span class="line">RPOP:列表右边移除一个元素，没有返回nil</span><br><span class="line">LRANGE:返回一段角标范围内的所有元素(0开始索引)</span><br><span class="line">BLPOP和BRPOP:与LPOP和RPOP类似，如果列表为空，阻塞当前连接，等数据进来或者超时。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">栈: 入口和出口在同一边</span><br><span class="line">队列: 入口和出口在不同的边</span><br><span class="line">阻塞队列: 队列空的时候，取元素会阻塞，队列满的时候，放元素会阻塞。</span><br></pre></td></tr></table></figure>
+
+<h5 id="set"><a href="#set" class="headerlink" title="set"></a>set</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Redis的Set结构与java中的hashset类似，可以看作value为null的HashMap,因为也是一个hash表</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">无序，元素不可重复，查找快，支持交并差集(共同好友)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SADD:向set中添加一个或者多个元素</span><br><span class="line">SREM:移除set中的指定元素</span><br><span class="line">SCARD:返回set中元素的个数</span><br><span class="line">SISMEMBER:判断一个元素是否存在于set中</span><br><span class="line">SMEMBBERS: 获取集合中的所有元素</span><br><span class="line">SINTER: 求集合的交集</span><br><span class="line">SDIFF: 求集合的差集(前面的set全集 - 交集 )</span><br><span class="line">SUNION: 求集合的并集</span><br></pre></td></tr></table></figure>
+
+<h5 id="SortedSet"><a href="#SortedSet" class="headerlink" title="SortedSet"></a>SortedSet</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Redis中的SortedSet是一个可以排序的set集合，SortedSet中带有一个score属性，可以基于score属性进行排序，底层的实现是跳表(SkipList)+hash表</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">可排序， 元素不重复， 查询速度快</span><br><span class="line"></span><br><span class="line">可以做排行榜</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ZADD: 添加一个或者多个元素到sorted set，已经存在则更新 score值</span><br><span class="line">ZREM: 删除sorted set中的一个指定元素</span><br><span class="line">ZSCORE: 获取sorted set中的指定元素的score值</span><br><span class="line">ZRANK: 获取sorted set中指定元素的排名（ZRERANK）</span><br><span class="line">ZCARD: 获取sorted set中的元素个数</span><br><span class="line">ZCOUNT: 统计指定score范围内的元素的个数</span><br><span class="line">ZINCRBY: 让sorted set中的指定元素的score按指定步长自增</span><br><span class="line">ZRANGE: 按score排序，获取指定范围内的排名(下标从0开始)</span><br><span class="line">ZRANGEBYSCORE: 按score排序后，获取指定score范围内的元素</span><br><span class="line">ZDIFF,ZINTER,ZUNION:求交并差集</span><br><span class="line"></span><br><span class="line">所有排名默认是升序，降序需要在命令的z后面加rev即可</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/11/01/redis/" data-id="cmvyihtrx000ddoty6495d3f1" data-title="Redis" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2026/10/26/sse/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">sse</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">November 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/10/">October 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/09/">September 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/08/">August 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/07/">July 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/06/">June 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/11/01/redis/">Redis</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/26/sse/">sse</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/16/openai_agent/">openai_agent</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/15/claude_code/">Cladue Code</a>
+          </li>
+        
+          <li>
+            <a href="/2026/10/08/toutiao/">头条AI</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
